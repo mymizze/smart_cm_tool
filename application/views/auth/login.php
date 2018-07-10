@@ -3,7 +3,7 @@
         <span id="logo"> <img src="<?=GD_IMAGE_BASE_PATH?>/logo.png" alt="SmartAdmin"> </span>
     </div>
 
-    <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Need an account?</span> <a href="register.html" class="btn btn-danger">Create account</a> </span>
+    <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">계정이 필요하신가요?</span> <a href="register.html" class="btn btn-danger">회원가입</a> </span>
 </header>
 
 <div id="main" role="main">
@@ -47,40 +47,40 @@
                 <div class="well no-padding">
                     <form action="index.html" id="login-form" class="smart-form client-form">
                         <header>
-                            Sign In
+                            로그인
                         </header>
 
                         <fieldset>
 
                             <section>
-                                <label class="label">E-mail</label>
+                                <label class="label">아이디</label>
                                 <label class="input"> <i class="icon-append fa fa-user"></i>
-                                    <input type="email" name="email">
-                                    <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter email address/username</b>
+                                    <input type="text" name="userid" maxlength="20">
+                                    <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> 아이디를 입력해주세요</b>
                                 </label>
                             </section>
 
                             <section>
-                                <label class="label">Password</label>
+                                <label class="label">비밀번호</label>
                                 <label class="input"> <i class="icon-append fa fa-lock"></i>
-                                    <input type="password" name="password">
-                                    <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b>
+                                    <input type="password" name="password" maxlength="20">
+                                    <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> 비밀번호를 입력해주세요</b>
                                 </label>
                                 <div class="note">
-                                    <a href="forgotpassword.html">Forgot password?</a>
+                                    <a href="forgotpassword.html">비밀번호를 분실하셨나요?</a>
                                 </div>
                             </section>
 
                             <section>
                                 <label class="checkbox">
                                     <input type="checkbox" name="remember" checked="">
-                                    <i></i>Stay signed in
+                                    <i></i>아이디 저장
                                 </label>
                             </section>
                         </fieldset>
                         <footer>
                             <button type="submit" class="btn btn-primary">
-                                Sign in
+                                로그인
                             </button>
                         </footer>
                     </form>
@@ -147,25 +147,25 @@
         $("#login-form").validate({
             // Rules for form validation
             rules : {
-                email : {
+                userid : {
                     required : true,
-                    email : true
+                    minlength : 4,
+                    maxlength : 20
                 },
                 password : {
                     required : true,
-                    minlength : 3,
+                    minlength : 4,
                     maxlength : 20
                 }
             },
 
             // Messages for form validation
             messages : {
-                email : {
-                    required : 'Please enter your email address',
-                    email : 'Please enter a VALID email address'
+                userid : {
+                    required : '아이디를 입력해 주세요'
                 },
                 password : {
-                    required : 'Please enter your password'
+                    required : '비밀번호를 입력해 주세요'
                 }
             },
 
