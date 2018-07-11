@@ -1,33 +1,72 @@
-<script>
+<script type="text/javascript">
     // Smart Admin Bootstrap 실행 함수
     runAllForms();
 
     /**
+     * 로그인
+     */
+    function loginDo() {
+        $.ajax({
+            url: '/auth/loginDo',
+            type: 'POST',
+            dataType: 'json',
+            data: $("#login-form").serialize(),
+            beforeSend: function () {
+                // write code here before submit
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                console.log("code : " + xhr.status);
+
+                alert("로그인 중 오류가 발생했습니다");
+                return false;
+            },
+            success: function(data, textStatus, xhr) {
+                if (data.status == true) {
+                    location.href = data.mainUrl;
+                } else {
+                    alert(data.errMsg);
+                    $("input[name=adminId]", "#login-form").focus();
+                    return false;
+                }
+            }
+        });
+    }
+
+    /**
      * 페이지 로딩시 실행 이벤트
      */
-    $(function() {
+    $(function () {
+        // 페이지 로드시 포커스 위치 설정
+        $("input[name=adminId]").focus();
+
+        $("input", "#login-form").keyup(function(event) {
+            if (event.keyCode == 13) {
+                loginDo();
+            }
+        });
+
         // Validation
         $("#login-form").validate({
             // Rules for form validation
             rules : {
-                userid : {
+                adminId : {
                     required : true,
                     minlength : 4,
-                    maxlength : 20
+                    maxlength : 30
                 },
-                password : {
+                adminPw : {
                     required : true,
                     minlength : 4,
-                    maxlength : 20
+                    maxlength : 30
                 }
             },
 
             // Messages for form validation
             messages : {
-                userid : {
+                adminId : {
                     required : '아이디를 입력해 주세요'
                 },
-                password : {
+                adminPw : {
                     required : '비밀번호를 입력해 주세요'
                 }
             },
@@ -35,6 +74,11 @@
             // Do not change code below
             errorPlacement : function(error, element) {
                 error.insertAfter(element.parent());
+            },
+
+            // 유효성 체크 후 실행 이벤트
+            submitHandler: function(form) {
+                loginDo();
             }
         });
     });
@@ -83,21 +127,22 @@
                         </p>
                     </div>
                 </div>
-
             </div>
+
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
                 <div class="well no-padding">
-                    <form action="index.html" id="login-form" class="smart-form client-form">
+                    <form id="login-form" name="login-form" method="POST" class="smart-form client-form">
+                        <input type="hidden" name="retUrl" value="<?=$retUrl?>">
+
                         <header>
                             로그인
                         </header>
 
                         <fieldset>
-
                             <section>
                                 <label class="label">아이디</label>
                                 <label class="input"> <i class="icon-append fa fa-user"></i>
-                                    <input type="text" name="userid" maxlength="20">
+                                    <input type="text" name="adminId" maxlength="30">
                                     <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> 아이디를 입력해주세요</b>
                                 </label>
                             </section>
@@ -105,7 +150,7 @@
                             <section>
                                 <label class="label">비밀번호</label>
                                 <label class="input"> <i class="icon-append fa fa-lock"></i>
-                                    <input type="password" name="password" maxlength="20">
+                                    <input type="password" name="adminPw" maxlength="30">
                                     <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> 비밀번호를 입력해주세요</b>
                                 </label>
                                 <div class="note">
@@ -120,6 +165,7 @@
                                 </label>
                             </section>
                         </fieldset>
+
                         <footer>
                             <button type="submit" class="btn btn-primary">
                                 로그인

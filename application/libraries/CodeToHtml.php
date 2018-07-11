@@ -108,41 +108,6 @@ Class CodeToHtml
     }
 
     /**
-     * 그룹 및 권한 관리에서 그룹구성원 목록 셀렉트 박스 옵션
-     */
-    public function getAdminInGroupListSelectBox($grSeq) {
-        # Model 설정
-        $commoncode = $this->commoncode;
-
-        # 그룹내에 포함여부를 포함한 관리자 목록 검색
-        $admin_vo = array(
-            'grSeq' => $grSeq,
-        );
-        $adminInGroupList = $commoncode->getAdminInGroupList($admin_vo);
-
-        # html 변환
-        $html = "";
-        $prevDepart = "";
-
-        foreach ($adminInGroupList as $key => $item) {
-            $classSelected = ($item->isMember == "Y") ? "selected" : "";
-
-            if ($prevDepart != $item->department) {
-                if ($key > 0) {
-                    $html .= "</optgroup>";
-                }
-                $html .= "<optgroup label='".$item->itemName."'>";
-            }
-            $html .= "<option value='".$item->adSeq."' ".$classSelected.">".$item->name."</option>";
-
-            $prevDepart = $item->department;
-        }
-
-        return $html;
-    }
-
-
-    /**
      * 그룹코드 텍스트 변환
      */
     public function getGroupToText($grSeq) {

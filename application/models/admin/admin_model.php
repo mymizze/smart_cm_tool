@@ -10,10 +10,8 @@ class Admin_model extends CI_Model
     public function getAdminList($vo) {
         $query = "
             SELECT
-                seq, grSeq, adminId, adminPw, name,
-                companyNo, phone, email, company, department,
-                position, picture, status, memo,
-                isDel, regDate, editDate
+                seq, grSeq, adminId, adminPw, name, phone, email,
+                picture, status, memo, isDel, regDate, editDate
             FROM AdminAccount
             WHERE 1=1 ".$this->getWhereAdminList($vo)."
             ORDER BY name ASC
@@ -29,13 +27,12 @@ class Admin_model extends CI_Model
         $query = "
             SELECT
                 seq, grSeq, adminId, adminPw, name,
-                companyNo, phone, email, company, department,
-                position, picture, status, memo,
+                phone, email, picture, status, memo,
                 isDel, regDate, editDate
             FROM AdminAccount
             WHERE isDel = 'N'
                 AND adminId = '".$vo['adminId']."'
-                AND adminPw = password('".$vo['adminPw']."')
+                AND adminPw = md5('".$vo['adminPw']."')
                 ".$this->getWhereAdmin($vo)."
             LIMIT 1
         ";
@@ -50,8 +47,7 @@ class Admin_model extends CI_Model
         $query = "
             SELECT
                 seq, grSeq, adminId, adminPw, name,
-                companyNo, phone, email, company, department,
-                position, picture, status, memo,
+                phone, email, picture, status, memo,
                 isDel, regDate, editDate
             FROM AdminAccount
             WHERE isDel = 'N'
@@ -63,50 +59,21 @@ class Admin_model extends CI_Model
     }
 
     /**
-     * 검색: 그룹 및 권한 관리에서 그룹구성원 목록
-     */
-    public function getAdminInGroupList($vo)
-    {
-        $query = "
-            SELECT
-                acc.department, dep.itemName, acc.seq AS adSeq, acc.adminId, acc.name,
-                (CASE WHEN gr.seq = '".$vo['grSeq']."' THEN 'Y' ELSE 'N' END) AS isMember
-            FROM AdminAccount AS acc
-                LEFT OUTER JOIN AdminGroup AS gr ON acc.grSeq = gr.seq AND gr.seq = '".$vo['grSeq']."'
-                LEFT OUTER JOIN (
-                    SELECT
-                        groupCode, itemCode, itemName
-                    FROM CommonCode
-                    WHERE groupCode='department'
-                ) AS dep ON acc.department = dep.itemCode
-            WHERE 1=1 ".$this->getWhereAdminInGroupList($vo)."
-            ORDER BY dep.itemName ASC, acc.name ASC;
-        ";
-
-        return $this->db->query($query)->result();
-    }
-
-    /**
      * 처리: 신규 계정 등록
      */
     public function addNewAccount($vo) {
         $query = "
             INSERT INTO AdminAccount (
-                grSeq, adminId, adminPw, name, companyNo,
-                phone, email, company, department, position,
-                picture, status, memo,
+                grSeq, adminId, adminPw, name, phone,
+                email, picture, status, memo,
                 regDate, editDate
             ) VALUES (
                 '".$vo['grSeq']."',
                 '".$vo['adminId']."',
-                password('".$vo['adminPw']."'),
+                md5('".$vo['adminPw']."'),
                 '".$vo['name']."',
-                '".$vo['companyNo']."',
                 '".$vo['phone']."',
                 '".$vo['email']."',
-                '".$vo['company']."',
-                '".$vo['department']."',
-                '".$vo['position']."',
                 '".$vo['picture']."',
                 '".$vo['status']."',
                 '".$vo['memo']."',
@@ -125,10 +92,6 @@ class Admin_model extends CI_Model
         $query = "
             UPDATE AdminAccount SET
                 name        = '".$vo['name']."',
-                companyNo   = '".$vo['companyNo']."',
-                company     = '".$vo['company']."',
-                department  = '".$vo['department']."',
-                position    = '".$vo['position']."',
                 phone       = '".$vo['phone']."',
                 email       = '".$vo['email']."',
                 grSeq       = '".$vo['grSeq']."',
@@ -140,7 +103,7 @@ class Admin_model extends CI_Model
 
         // 비밀번호 입력값이 있을 경우만 수정
         if (isset($vo['adminPw']) && $vo['adminPw'] != "") {
-            $query .= ", adminPw = password('".$vo['adminPw']."') ";
+            $query .= ", adminPw = md5('".$vo['adminPw']."') ";
         }
 
         $query .= "
