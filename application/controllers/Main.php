@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Main extends MY_Controller
 {
 
-    # 레이아웃 파일 설정 기본 : views/_layout/layout_default.php
+    # 기본 레이아웃 파일 설정
     public $layout = 'layout_default';
 
     /**
@@ -23,7 +23,7 @@ class Main extends MY_Controller
      */
     public function index()
     {
-        // parent::__start();
+        parent::__start();
 
         $data = $this->data;
 
@@ -35,7 +35,7 @@ class Main extends MY_Controller
      */
     public function blank()
     {
-        // parent::__start();
+        parent::__start();
 
         $data = $this->data;
 
