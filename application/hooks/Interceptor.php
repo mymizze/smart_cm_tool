@@ -19,24 +19,24 @@ class Interceptor
         $CI->load->library('session');
 
         # Model 로드
-        // $CI->load->model('site/access_model');
+        $CI->load->model('site/access_model');
 
         # Library 설정
         $util = $CI->util;
-        // $commonCode = $CI->commoncode;
-        // $codeToHtml = $CI->codetohtml;
-        // $codeToHtml = $CI->codetohtml;
+        $commonCode = $CI->commoncode;
+        $codeToHtml = $CI->codetohtml;
+        $codeToHtml = $CI->codetohtml;
 
         # Model 설정
-        // $access_model = $CI->access_model;
+        $access_model = $CI->access_model;
 
         # Util 글로벌 변수 설정
         $CI->global_data['util'] = $util;
-        // $CI->global_data['commonCode'] = $commonCode;
-        // $CI->global_data['codeToHtml'] = $codeToHtml;
+        $CI->global_data['commonCode'] = $commonCode;
+        $CI->global_data['codeToHtml'] = $codeToHtml;
 
         # 관리자 사이트 설정 정보
-        // $CI->global_data['adminSiteInfo'] = $commonCode->getAdminSiteInfo()[0];
+        $CI->global_data['adminSiteInfo'] = $commonCode->getAdminSiteInfo()[0];
 
         # 디바이스 체크
         $CI->global_data['device']['isAndroid'] = (strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false);

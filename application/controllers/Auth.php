@@ -17,9 +17,9 @@ class Auth extends MY_Controller
         parent::__construct();
 
         # Model 로드
-        // $this->load->model('admin/admin_model');
-        // $this->load->model('admin/menu_model');
-        // $this->load->model('site/access_model');
+        $this->load->model('admin/admin_model');
+        $this->load->model('site/menu_model');
+        $this->load->model('site/access_model');
     }
 
     /**
@@ -35,7 +35,7 @@ class Auth extends MY_Controller
         $util = $this->util;
 
         # Model 설정
-        // $admin_model = $this->admin_model;
+        $admin_model = $this->admin_model;
 
         # 파라미터
         $retUrl = $util->isNullToVal($util->requestParam('retUrl'), '');

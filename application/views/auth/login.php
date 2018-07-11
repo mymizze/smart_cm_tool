@@ -1,3 +1,45 @@
+<script>
+    // Smart Admin Bootstrap 실행 함수
+    runAllForms();
+
+    /**
+     * 페이지 로딩시 실행 이벤트
+     */
+    $(function() {
+        // Validation
+        $("#login-form").validate({
+            // Rules for form validation
+            rules : {
+                userid : {
+                    required : true,
+                    minlength : 4,
+                    maxlength : 20
+                },
+                password : {
+                    required : true,
+                    minlength : 4,
+                    maxlength : 20
+                }
+            },
+
+            // Messages for form validation
+            messages : {
+                userid : {
+                    required : '아이디를 입력해 주세요'
+                },
+                password : {
+                    required : '비밀번호를 입력해 주세요'
+                }
+            },
+
+            // Do not change code below
+            errorPlacement : function(error, element) {
+                error.insertAfter(element.parent());
+            }
+        });
+    });
+</script>
+
 <header id="header">
     <div id="logo-group">
         <span id="logo"> <img src="<?=GD_IMAGE_BASE_PATH?>/logo.png" alt="SmartAdmin"> </span>
@@ -104,75 +146,3 @@
         </div>
     </div>
 </div>
-
-<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
-<script src="<?=GD_ASSETS_PATH?>/js/plugin/pace/pace.min.js"></script>
-
-<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script> if (!window.jQuery) { document.write('<script src="<?=GD_ASSETS_PATH?>/js/libs/jquery-3.2.1.min.js"><\/script>');} </script>
-
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script> if (!window.jQuery.ui) { document.write('<script src="<?=GD_ASSETS_PATH?>/js/libs/jquery-ui.min.js"><\/script>');} </script>
-
-<!-- IMPORTANT: APP CONFIG -->
-<script src="<?=GD_ASSETS_PATH?>/js/app.config.js"></script>
-
-<!-- JS TOUCH : include this plugin for mobile drag / drop touch events
-<script src="<?=GD_ASSETS_PATH?>/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
-
-<!-- BOOTSTRAP JS -->
-<script src="<?=GD_ASSETS_PATH?>/js/bootstrap/bootstrap.min.js"></script>
-
-<!-- JQUERY VALIDATE -->
-<script src="<?=GD_ASSETS_PATH?>/js/plugin/jquery-validate/jquery.validate.min.js"></script>
-
-<!-- JQUERY MASKED INPUT -->
-<script src="<?=GD_ASSETS_PATH?>/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
-
-<!--[if IE 8]>
-
-    <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
-
-<![endif]-->
-
-<!-- MAIN APP JS FILE -->
-<script src="<?=GD_ASSETS_PATH?>/js/app.min.js"></script>
-
-<script>
-    runAllForms();
-
-    $(function() {
-        // Validation
-        $("#login-form").validate({
-            // Rules for form validation
-            rules : {
-                userid : {
-                    required : true,
-                    minlength : 4,
-                    maxlength : 20
-                },
-                password : {
-                    required : true,
-                    minlength : 4,
-                    maxlength : 20
-                }
-            },
-
-            // Messages for form validation
-            messages : {
-                userid : {
-                    required : '아이디를 입력해 주세요'
-                },
-                password : {
-                    required : '비밀번호를 입력해 주세요'
-                }
-            },
-
-            // Do not change code below
-            errorPlacement : function(error, element) {
-                error.insertAfter(element.parent());
-            }
-        });
-    });
-</script>

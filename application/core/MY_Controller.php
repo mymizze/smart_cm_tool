@@ -17,8 +17,8 @@ Class MY_Controller extends CI_Controller
         # Library 로드 및 설정
 
         # Model 로드
-        // $this->load->model('site/menu_model');
-        // $this->load->model('site/access_model');
+        $this->load->model('site/menu_model');
+        $this->load->model('site/access_model');
 
         # 글로벌 변수 생성 및 설정
         $CI =& get_instance();

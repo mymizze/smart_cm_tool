@@ -41,6 +41,11 @@
     <link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
     <link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
     <link rel="apple-touch-icon" sizes="152x152" href="img/splash/touch-icon-ipad-retina.png">
+
+    <!-- 사용자 설정 CSS -->
+    <link href="<?=GD_ASSETS_PATH?>/css/custom.style.css?time=<?=time()?>" rel="stylesheet">
+    <link href="<?=GD_ASSETS_PATH?>/css/custom.common.css?time=<?=time()?>" rel="stylesheet">
+    <link href="<?=GD_ASSETS_PATH?>/css/custom.css?time=<?=time()?>" rel="stylesheet">
 </head>
 
 <body class="">
@@ -922,6 +927,12 @@
     <!-- SmartChat UI : plugin -->
     <script src="<?=GD_ASSETS_PATH?>/js/smart-chat-ui/smart.chat.ui.min.js"></script>
     <script src="<?=GD_ASSETS_PATH?>/js/smart-chat-ui/smart.chat.manager.min.js"></script>
+
+    <!-- 사용자 설정 JS -->
+    <script src="<?=GD_ASSETS_PATH?>/js/custom.bootstrap.js?time=<?=time()?>"></script>
+    <script src="<?=GD_ASSETS_PATH?>/js/function.system.js?time=<?=time()?>"></script>
+    <script src="<?=GD_ASSETS_PATH?>/js/function.util.js?time=<?=time()?>"></script>
+    <script src="<?=GD_ASSETS_PATH?>/js/function.ui.js?time=<?=time()?>"></script>
 
     <script>
         $(document).ready(function() {

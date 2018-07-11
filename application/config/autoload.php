@@ -61,8 +61,8 @@ $autoload['packages'] = array();
 $autoload['libraries'] = array(
     'define',
     'util',
-    // 'commonCode',
-    // 'codeToHtml'
+    'commonCode',
+    'codeToHtml'
 );
 
 /*
