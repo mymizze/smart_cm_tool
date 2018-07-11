@@ -36,6 +36,23 @@
      * 페이지 로딩시 실행 이벤트
      */
     $(function () {
+        // 아이디 저장 체크유무 쿠키 값 체크후 설정
+        var isSaveIdCookie = util.cookies.get("isSaveId");
+
+        // 쿠키값에 Boolean 값이 아닌 경우를 위해 실행 값으로 변환
+        isSaveIdCookie = (isSaveIdCookie == "true") ? true : false;
+
+        // 쿠키 값 설정에 따른 아이디 저장 항목 checked 설정
+        $("input[name=saveId]", $("#login-form")).prop('checked', isSaveIdCookie);
+
+        if (isSaveIdCookie === true) {
+            $("input[name=adminId]").val(
+                util.cookies.get("adminId")
+            );
+        }
+
+
+
         // 페이지 로드시 포커스 위치 설정
         $("input[name=adminId]").focus();
 
@@ -78,6 +95,17 @@
 
             // 유효성 체크 후 실행 이벤트
             submitHandler: function(form) {
+                // 아이디 저장
+                var isSaveId = $("input[name=saveId]").prop('checked');
+
+                if (isSaveId === true) {
+                    util.cookies.set([
+                        { key:"adminId", val:$("input[name=adminId]").val(), exp:365 },
+                        { key:"isSaveId", val:isSaveId, exp:365 }
+                    ]);
+                }
+
+                // 로그인 처리
                 loginDo();
             }
         });
@@ -160,7 +188,7 @@
 
                             <section>
                                 <label class="checkbox">
-                                    <input type="checkbox" name="remember" checked="">
+                                    <input type="checkbox" name="saveId" checked="">
                                     <i></i>아이디 저장
                                 </label>
                             </section>
