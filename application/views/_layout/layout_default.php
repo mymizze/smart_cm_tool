@@ -61,7 +61,7 @@
     <!-- 메인 판넬 -->
     <div id="main" role="main">
         <!-- 페이지 제목 및 경로정보 -->
-        <?php include(APPPATH."views/_inc/pageInfo.php");?>
+        <?php include(APPPATH."views/_inc/breadcrumb.php");?>
         <!--// 페이지 제목 및 경로정보 -->
 
         <!-- 컨텐츠 -->
