@@ -262,6 +262,30 @@ Class Util
     }
 
     /**
+     * 두개의 값을 비교 후 동일 하지 않을 경우 지정 값 출력
+     *
+     * @param   : 비교 문자 1
+     * @param   : 비교 문자 2
+     * @param   : 동일 조건 성립시 출력 할 값
+     * @return  : string
+     * @example : compareNot('aa', 'aa', 'selected') => 'selected'
+     *            compareNot('aa', 'bb', 'selected') => ''
+     *            compareNot('aa', 'bb', 'type1', 'type2') => 'type2'
+     */
+    public function compareNot($s1, $s2, $def, $else='')
+    {
+        $rval = "";
+
+        if(strtolower($s1) != strtolower($s2)) {
+            $rval = $def;
+        } else {
+            $rval = $else;
+        }
+
+        return $rval;
+    }
+
+    /**
      * 문자열 자르기
      *
      * @return  string

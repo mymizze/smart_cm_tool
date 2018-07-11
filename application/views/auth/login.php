@@ -45,26 +45,19 @@
         // 쿠키 값 설정에 따른 아이디 저장 항목 checked 설정
         $("input[name=saveId]", $("#login-form")).prop('checked', isSaveIdCookie);
 
+        // 아이디 저장 설정이 되어있을 경우 아이디 입력란에 아이디 값 설정
         if (isSaveIdCookie === true) {
             $("input[name=adminId]").val(
                 util.cookies.get("adminId")
             );
         }
 
-
-
         // 페이지 로드시 포커스 위치 설정
         $("input[name=adminId]").focus();
 
-        $("input", "#login-form").keyup(function(event) {
-            if (event.keyCode == 13) {
-                loginDo();
-            }
-        });
-
-        // Validation
+        // 유효성 검사
         $("#login-form").validate({
-            // Rules for form validation
+            // 유효성 검사 규칙
             rules : {
                 adminId : {
                     required : true,
@@ -78,7 +71,7 @@
                 }
             },
 
-            // Messages for form validation
+            // 유효성 검사 메시지 설정
             messages : {
                 adminId : {
                     required : '아이디를 입력해 주세요'
@@ -88,7 +81,7 @@
                 }
             },
 
-            // Do not change code below
+            // 에러 처리
             errorPlacement : function(error, element) {
                 error.insertAfter(element.parent());
             },
