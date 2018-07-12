@@ -19,25 +19,68 @@
     <nav>
         <ul>
             <li class="<?=$util->compare($page['depth1'],'','active')?>">
-                <a href="<?=GD_HOME_PATH?>" title="대쉬보드"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">대쉬보드</span></a>
+                <a href="<?=GD_HOME_PATH?>" title="대쉬보드">
+                    <i class="fa fa-lg fa-fw fa-home"></i>
+                    <span class="menu-item-parent">대쉬보드</span>
+                </a>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-cube txt-color-blue"></i> <span class="menu-item-parent">SmartAdmin Intel</span></a>
-                <ul>
-                    <li class="">
-                        <a href="layouts.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">App Layouts</span></a>
-                    </li>
-                    <li class="">
-                        <a href="skins.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-picture-o"></i> <span class="menu-item-parent">Prebuilt Skins</span></a>
-                    </li>
-                    <li>
-                        <a href="applayout.html"><i class="fa fa-cube"></i> App Settings</a>
-                    </li>
+            <?
+            # 메뉴 목록 출력(접근 권한 없는 메뉴 제외)
+            $prevDepth1 = "";
+            foreach ($menuList as $key => $item) {
+                // 같은 1단계에 포함된 2단계 메뉴 출력하다가 다음 1단계 메뉴가 나온 경우
+                if ($item['depth1'] != $prevDepth1) {
+                    // 하단 막는 태그를 선처리 하므로 첫번째 동작을 제외하고 실행
+                    if ($key > 0) {
+            ?>
                 </ul>
             </li>
-            <li>
-                <a href="inbox.html"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Outlook</span> <span class="badge pull-right inbox-badge margin-right-13">14</span></a>
+            <?
+                    }
+
+                    // 현재 선택된 메뉴 depth1 활성화 여부
+                    $currActive1 = ($item['depth1'] == $page['depth1']) ? "active" : "";
+                    $iconClass = ($item['icon'] == "") ? "fa-fw fa-desktop" : $item['icon'];
+            ?>
+            <li class="<?=$currActive1?>">
+                <a href="#">
+                    <i class="fa fa-lg fa-fw <?=$iconClass?>"></i>
+                    <span class="menu-item-parent"><?=$item['dep1name']?></span>
+                </a>
+                <ul>
+            <?
+                }
+
+                // 현재 선택된 메뉴 depth2 활성화 여부
+                $currActive2 = ($item['depth2'] == $page['depth2']) ? "active" : "";
+
+                // 메뉴 depth
+                $params = array(
+                    'depth1' => $item['depth1'],
+                    'depth2' => $item['depth2'],
+                );
+                $params = http_build_query($params);
+
+                // 링크 경로 설정
+                $linkUrl = GD_HOME_PATH.$item['linkUrl']."?".$params.$item['linkParams'];
+            ?>
+                    <li class="<?=$currActive2?>">
+                        <a href="<?=$linkUrl?>" title="<?=$item['dep2name']?>">
+                            <span class="menu-item-parent"><?=$item['dep2name']?></span>
+                        </a>
+                    </li>
+            <?
+                $prevDepth1 = $item['depth1'];
+            }
+
+            # 2단계 메뉴 하단 태그는 강제로 출력을 해야하나 데이터가 전혀 없는 경우는 제외
+            if (count($menuList) > 0) {
+            ?>
+                </ul>
             </li>
+            <?
+            }
+            ?>
         </ul>
     </nav>
     <!--// 사이드 메뉴 -->
