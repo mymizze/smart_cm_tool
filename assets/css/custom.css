@@ -36,6 +36,46 @@ select:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+/* Page loading spinner animate */
+#content {
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 /* ul li 형태의 목록 기본 형태 */
 ul.li-vertical-list-default {
     margin: 0;
@@ -90,88 +130,4 @@ ul.li-vertical-list-default li label {
     background: #D0EEFF;
     margin-bottom: 5px;
     margin-top: 5px;
-}
-
-.basicInfo .list-vertical {
-    margin-bottom: 8px;
-}
-
-#relNewList .list-vertical hr {
-    display: none;
-}
-#relNewList .list-vertical:last-child hr {
-    display: block;
-}
-
-.configMenu .btnConfigMore {
-    padding: 0 10px;
-    margin-left: 10px;
-    height:38px;
-    cursor: pointer;
-}
-.configMenu .editIcon {
-    padding: 0;
-    display: unset;
-}
-
-
-
-/* 직원 그룹 및 권한: /human/group */
-.groupAccess .block {
-    margin: 5px 0;
-    border: 1px solid #EEEEEE;
-    background: #fff;
-}
-.groupAccess .block.not-use {
-    margin: 5px 0;
-    border: 1px solid #EEEEEE;
-    background: #FD9392;
-}
-.groupAccess .block-title {
-    font-family: Arial;
-    font-size: 12px;
-    color: #4c4743;
-    padding: 0 10px;
-    height: 40px;
-    line-height: 40px;
-    position: relative;
-}
-.groupAccess.sortable {
-    list-style: none;
-    padding-left: 0;
-}
-.groupAccess.sortable ul {
-    margin-left: 25px;
-}
-.groupAccess .ui-sortable-helper {
-    box-shadow: rgba(0,0,0,0.15) 0 3px 5px 0;
-    width: 300px!important;
-    height: 40px!important;
-}
-.groupAccess .sortable-placeholder {
-    height: 35px;
-    background: #D0EEFF;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-/* 공통코드관리: /config/code */
-.commonCode .sortable-placeholder td {
-    height: 55px;
-    background: #D0EEFF;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-/* 직원계정: /human/account */
-.account th,
-.account td {
-    padding: 15px 8px !important;
-}
-
-/* 직원계정 신규작성: /human/accountWrite */
-.accountWrite .errMsg {
-    text-align: left;
-    padding: 0;
-    line-height: 32px;
 }

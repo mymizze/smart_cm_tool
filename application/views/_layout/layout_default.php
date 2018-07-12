@@ -46,37 +46,6 @@
     <link href="<?=GD_ASSETS_PATH?>/css/custom.style.css?time=<?=time()?>" rel="stylesheet">
     <link href="<?=GD_ASSETS_PATH?>/css/custom.common.css?time=<?=time()?>" rel="stylesheet">
     <link href="<?=GD_ASSETS_PATH?>/css/custom.css?time=<?=time()?>" rel="stylesheet">
-</head>
-
-<body class="">
-
-    <!-- 헤더 -->
-    <?php include(APPPATH."views/_inc/header.php");?>
-    <!--// 헤더 -->
-
-    <!-- 사이드바 GNB -->
-    <?php include(APPPATH."views/_inc/sidemenu.php");?>
-    <!--// 사이드바 GNB -->
-
-    <!-- 메인 판넬 -->
-    <div id="main" role="main">
-        <!-- 페이지 제목 및 경로정보 -->
-        <?php include(APPPATH."views/_inc/breadcrumb.php");?>
-        <!--// 페이지 제목 및 경로정보 -->
-
-        <!-- 컨텐츠 -->
-        {yield}
-        <!--// 컨텐츠 -->
-    </div>
-    <!--// 메인판넬 -->
-
-    <!-- 푸터 -->
-    <?php include(APPPATH."views/_inc/footer.php");?>
-    <!--// 푸터 -->
-
-    <!-- 숏컷 영역: 사용자명 클릭시 큰 사이즈 메뉴 -->
-    <?php include(APPPATH."views/_inc/shortcut.php");?>
-    <!--// 숏컷 영역 -->
 
     <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
     <script data-pace-options='{ "restartOnRequestAfter": true }' src="<?=GD_ASSETS_PATH?>/js/plugin/pace/pace.min.js"></script>
@@ -95,6 +64,43 @@
             document.write('<script src="<?=GD_ASSETS_PATH?>/js/libs/jquery-ui.min.js"><\/script>');
         }
     </script>
+</head>
+
+<body class="">
+
+    <!-- 헤더 -->
+    <?php include(APPPATH."views/_inc/header.php");?>
+    <!--// 헤더 -->
+
+    <!-- 사이드바 GNB -->
+    <?php include(APPPATH."views/_inc/sidemenu.php");?>
+    <!--// 사이드바 GNB -->
+
+    <!-- 메인 판넬 -->
+    <div id="main" role="main">
+        <!-- 페이지 제목 및 경로정보 -->
+        <?php include(APPPATH."views/_inc/breadcrumb.php");?>
+        <!--// 페이지 제목 및 경로정보 -->
+
+        <!-- 페이지 로딩 스피너 -->
+        <div style="padding-left:20px">
+            <h1 id="page_spinner" class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>
+        </div>
+        <!--// 페이지 로딩 스피너 -->
+
+        <!-- 컨텐츠 -->
+        {yield}
+        <!--// 컨텐츠 -->
+    </div>
+    <!--// 메인판넬 -->
+
+    <!-- 푸터 -->
+    <?php include(APPPATH."views/_inc/footer.php");?>
+    <!--// 푸터 -->
+
+    <!-- 숏컷 영역: 사용자명 클릭시 큰 사이즈 메뉴 -->
+    <?php include(APPPATH."views/_inc/shortcut.php");?>
+    <!--// 숏컷 영역 -->
 
     <!-- IMPORTANT: APP CONFIG -->
     <script src="<?=GD_ASSETS_PATH?>/js/app.config.js"></script>
@@ -136,9 +142,7 @@
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/fastclick/fastclick.min.js"></script>
 
     <!--[if IE 8]>
-
     <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
-
     <![endif]-->
 
     <!-- Demo purpose only -->
@@ -147,13 +151,6 @@
     <!-- MAIN APP JS FILE -->
     <script src="<?=GD_ASSETS_PATH?>/js/app.min.js"></script>
 
-    <!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
-    <!-- Voice command : plugin -->
-    <script src="<?=GD_ASSETS_PATH?>/js/speech/voicecommand.min.js"></script>
-
-    <!-- SmartChat UI : plugin -->
-    <script src="<?=GD_ASSETS_PATH?>/js/smart-chat-ui/smart.chat.ui.min.js"></script>
-    <script src="<?=GD_ASSETS_PATH?>/js/smart-chat-ui/smart.chat.manager.min.js"></script>
 
     <!-- 사용자 설정 JS -->
     <script src="<?=GD_ASSETS_PATH?>/js/custom.bootstrap.js?time=<?=time()?>"></script>
@@ -163,6 +160,10 @@
 
     <script>
         $(document).ready(function() {
+            // 페이지 로딩 완료시 페이지 로딩 스피너 삭제
+            $("#page_spinner").remove();
+
+            // 페이지 셋업
             pageSetUp();
         });
     </script>
