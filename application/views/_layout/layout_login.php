@@ -36,7 +36,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
 
     <!-- 사용자 설정 CSS -->
-    <link href="<?=GD_ASSETS_PATH?>/css/custom.style.css?time=<?=time()?>" rel="stylesheet">
     <link href="<?=GD_ASSETS_PATH?>/css/custom.common.css?time=<?=time()?>" rel="stylesheet">
     <link href="<?=GD_ASSETS_PATH?>/css/custom.css?time=<?=time()?>" rel="stylesheet">
 

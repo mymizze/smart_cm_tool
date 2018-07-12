@@ -36,7 +36,7 @@ select:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
 }
 
-/* Page loading spinner animate */
+/* 페이지 로딩시 페이드 인 애니메이션 */
 #content {
     animation: fadein 2s;
     -moz-animation: fadein 2s; /* Firefox */
