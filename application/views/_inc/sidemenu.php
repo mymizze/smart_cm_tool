@@ -52,7 +52,7 @@
                 }
 
                 // 현재 선택된 메뉴 depth2 활성화 여부
-                $currActive2 = ($item['depth2'] == $page['depth2']) ? "active" : "";
+                $currActive2 = ($currActive1 == "active" && $item['depth2'] == $page['depth2']) ? "active" : "";
 
                 // 메뉴 depth
                 $params = array(
