@@ -25,6 +25,9 @@ Class Define
 
         # 기본 이미지 경로
         define('GD_IMAGE_BASE_PATH', '/assets/img');
+
+        # 위젯 판넬 타이틀바 컬러
+        define('GD_JARVISWIDGET_COLOR', 'jarviswidget-color-blueDark');
     }
 }
 
