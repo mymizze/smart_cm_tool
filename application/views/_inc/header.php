@@ -5,7 +5,9 @@
 
         <!-- 로고 -->
         <span id="logo">
-            <img src="<?=GD_IMAGE_BASE_PATH?>/logo.png" alt="SmartAdmin">
+            <a href="<?=GD_HOME_PATH?>">
+                <img src="<?=GD_IMAGE_BASE_PATH?>/logo.png" alt="SmartAdmin">
+            </a>
         </span>
         <!--// 로고 -->
 
