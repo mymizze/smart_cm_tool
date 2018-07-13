@@ -11,19 +11,6 @@
 
                 <!-- Widget ID (each widget will need unique ID)-->
                 <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
-                    <!-- widget options:
-                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                        data-widget-colorbutton="false"
-                        data-widget-editbutton="false"
-                        data-widget-togglebutton="false"
-                        data-widget-deletebutton="false"
-                        data-widget-fullscreenbutton="false"
-                        data-widget-custombutton="false"
-                        data-widget-collapsed="true"
-                        data-widget-sortable="false"
-
-                    -->
                     <header>
                         <span class="widget-icon glyphicon glyphicon-align-justify"> <i class="fa fa-comments"></i> </span>
                         <h2>Widget Title </h2>
@@ -42,7 +29,35 @@
                         <!-- widget content -->
                         <div class="widget-body">
 
-                            <!-- this is what the user will see -->
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
+                            test<br><br>
 
                         </div>
                         <!-- end widget content -->

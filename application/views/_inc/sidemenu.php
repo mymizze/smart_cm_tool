@@ -19,9 +19,9 @@
     <nav>
         <ul>
             <li class="<?=$util->compare($page['depth1'],'','active')?>">
-                <a href="<?=GD_HOME_PATH?>" title="대쉬보드">
+                <a href="<?=GD_HOME_PATH?>" title="관리자홈">
                     <i class="fa fa-lg fa-fw fa-home"></i>
-                    <span class="menu-item-parent">대쉬보드</span>
+                    <span class="menu-item-parent">관리자홈</span>
                 </a>
             </li>
             <?

@@ -89,7 +89,7 @@ Class MY_Controller extends CI_Controller
                     $data['page']['summary']  = $item['summary'];
                     break;
                 } elseif ($data['URI']['segment'] == "") {
-                    $data['page']['dep1name'] = "대시보드";
+                    $data['page']['dep1name'] = "관리자홈";
                     $data['page']['dep2name'] = "";
                     $data['page']['summary']  = "중요한 정보를 한눈에 볼 수 있는 페이지 입니다.";
                 } else {

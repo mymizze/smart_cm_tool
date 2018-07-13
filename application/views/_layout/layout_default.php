@@ -2,7 +2,7 @@
 <html lang="ko-kr">
 <head>
     <meta charset="utf-8">
-    <title>TOTO Standard v2.0</title>
+    <title><?=$adminSiteInfo->title?></title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="p3p" content='CP="CAO DSP AND SO " policyref="/w3c/p3p.xml"'>
@@ -162,7 +162,7 @@
     <script src="<?=GD_ASSETS_PATH?>/js/app.config.js"></script>
 
     <!-- Demo purpose only -->
-    <script src="<?=GD_ASSETS_PATH?>/js/demo.min.js"></script>
+    <script src="<?=GD_ASSETS_PATH?>/js/demo.min.js?time=<?=time()?>"></script>
 
     <!-- MAIN APP JS FILE -->
     <script src="<?=GD_ASSETS_PATH?>/js/app.min.js"></script>
