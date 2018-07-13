@@ -16,27 +16,14 @@
     <!-- Basic Styles -->
     <link rel="stylesheet" type="text/css" media="screen" href="<?=GD_ASSETS_PATH?>/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="<?=GD_ASSETS_PATH?>/css/font-awesome.min.css">
-
-    <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
     <link rel="stylesheet" type="text/css" media="screen" href="<?=GD_ASSETS_PATH?>/css/smartadmin-production-plugins.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="<?=GD_ASSETS_PATH?>/css/smartadmin-production.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="<?=GD_ASSETS_PATH?>/css/smartadmin-skins.min.css">
-
-    <!-- SmartAdmin RTL Support -->
-    <link rel="stylesheet" type="text/css" media="screen" href="<?=GD_ASSETS_PATH?>/css/smartadmin-rtl.min.css">
-
-    <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
     <link rel="stylesheet" type="text/css" media="screen" href="<?=GD_ASSETS_PATH?>/css/demo.min.css">
-
-    <!-- #FAVICONS -->
     <link rel="shortcut icon" href="<?=GD_IMAGE_BASE_PATH?>/favicon/favicon.ico" type="image/x-icon">
     <link rel="icon" href="<?=GD_IMAGE_BASE_PATH?>/favicon/favicon.ico" type="image/x-icon">
-
-    <!-- #GOOGLE FONT -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
-
-    <!-- Specifying a Webpage Icon for Web Clip
-     Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+    <link href="<?=GD_ASSETS_PATH?>/js/plugin/switchery/switchery.min.css" rel="stylesheet" />
     <link rel="apple-touch-icon" href="img/splash/sptouch-icon-iphone.png">
     <link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
     <link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
@@ -46,10 +33,10 @@
     <link href="<?=GD_ASSETS_PATH?>/css/custom.common.css?time=<?=time()?>" rel="stylesheet">
     <link href="<?=GD_ASSETS_PATH?>/css/custom.css?time=<?=time()?>" rel="stylesheet">
 
-    <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+
     <script data-pace-options='{ "restartOnRequestAfter": true }' src="<?=GD_ASSETS_PATH?>/js/plugin/pace/pace.min.js"></script>
 
-    <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         if (!window.jQuery) {
@@ -63,42 +50,22 @@
             document.write('<script src="<?=GD_ASSETS_PATH?>/js/libs/jquery-ui.min.js"><\/script>');
         }
     </script>
-
-    <!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+    <script src="<?=GD_ASSETS_PATH?>/js/libs/jquery-migrate-1.1.0.min.js"></script>
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script>
-
-    <!-- BOOTSTRAP JS -->
     <script src="<?=GD_ASSETS_PATH?>/js/bootstrap/bootstrap.min.js"></script>
-
-    <!-- CUSTOM NOTIFICATION -->
     <script src="<?=GD_ASSETS_PATH?>/js/notification/SmartNotification.min.js"></script>
-
-    <!-- JARVIS WIDGETS -->
     <script src="<?=GD_ASSETS_PATH?>/js/smartwidgets/jarvis.widget.min.js"></script>
-
-    <!-- EASY PIE CHARTS -->
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
-
-    <!-- SPARKLINES -->
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/sparkline/jquery.sparkline.min.js"></script>
-
-    <!-- JQUERY VALIDATE -->
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/jquery-validate/jquery.validate.min.js"></script>
-
-    <!-- JQUERY MASKED INPUT -->
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
-
-    <!-- JQUERY SELECT2 INPUT -->
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/select2/select2.min.js"></script>
-
-    <!-- JQUERY UI + Bootstrap Slider -->
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
-
-    <!-- browser msie issue fix -->
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
-
-    <!-- FastClick: For mobile devices -->
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/fastclick/fastclick.min.js"></script>
+    <script src="<?=GD_ASSETS_PATH?>/js/form-slider-switcher.demo.min.js"></script>
+    <script src="<?=GD_ASSETS_PATH?>/js/plugin/switchery/switchery.min.js"></script>
+    <script src="<?=GD_ASSETS_PATH?>/js/plugin/parsley/dist/parsley.js"></script>
 
     <!--[if IE 8]>
     <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
@@ -117,6 +84,19 @@
 
             // 페이지 셋업
             pageSetUp();
+
+            /**
+             * Parsley: hidden 영역일 경우 required 설정이 되어있어도 메세지 출력이 되지 않도록 설정
+             */
+            $.listen('parsley:field:validated', function(fieldInstance){
+                if (fieldInstance.$element.is(":hidden")) {
+                    // hide the message wrapper
+                    fieldInstance._ui.$errorsWrapper.css('display', 'none');
+                    // set validation result to true
+                    fieldInstance.validationResult = true;
+                    return true;
+                }
+            });
         });
     </script>
 </head>

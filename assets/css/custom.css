@@ -36,7 +36,24 @@ select:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
 }
 
-/* 페이지 로딩시 페이드 인 애니메이션 */
+/* ul li 형태의 목록 기본 형태 */
+ul.li-vertical-list-default {
+    margin: 0;
+    padding: 0;
+}
+ul.li-vertical-list-default li {
+    list-style: none;
+    border: solid 1px #EEEEEE;
+    padding: 0 12px;
+    margin: 8px 0;
+    height: 50px;
+    line-height: 50px;
+}
+ul.li-vertical-list-default li label {
+    margin: 0 10px;
+}
+
+/* 페이지 로딩시 fadeIn 애니메이션 */
 #content {
     animation: fadein 2s;
     -moz-animation: fadein 2s; /* Firefox */
@@ -76,21 +93,29 @@ select:-webkit-autofill:focus {
     }
 }
 
-/* ul li 형태의 목록 기본 형태 */
-ul.li-vertical-list-default {
-    margin: 0;
-    padding: 0;
+/* Nestable List */
+.form-horizontal.form-bordered .form-group {
+    border-bottom: 1px solid #eee;
+    margin: 0
 }
-ul.li-vertical-list-default li {
-    list-style: none;
-    border: solid 1px #EEEEEE;
-    padding: 0 12px;
-    margin: 8px 0;
-    height: 50px;
-    line-height: 50px;
+
+.form-horizontal.form-bordered .form-group:last-child {
+    border-bottom: 0
 }
-ul.li-vertical-list-default li label {
-    margin: 0 10px;
+
+.form-horizontal.form-bordered .form-group>.control-label {
+    padding: 22px 15px 15px;
+    border-right: 1px solid #eee;
+    margin-right: -1px
+}
+
+.form-horizontal.form-bordered .form-group>div {
+    padding: 15px;
+    border-left: 1px solid #eee
+}
+
+.form-horizontal.form-bordered .has-feedback .form-control-feedback {
+    top: 15px
 }
 
 /* 메뉴 설정: /config/menu */
@@ -130,4 +155,88 @@ ul.li-vertical-list-default li label {
     background: #D0EEFF;
     margin-bottom: 5px;
     margin-top: 5px;
+}
+
+.basicInfo .list-vertical {
+    margin-bottom: 8px;
+}
+
+#relNewList .list-vertical hr {
+    display: none;
+}
+#relNewList .list-vertical:last-child hr {
+    display: block;
+}
+
+.configMenu .btnConfigMore {
+    padding: 0 10px;
+    margin-left: 10px;
+    height:38px;
+    cursor: pointer;
+}
+.configMenu .editIcon {
+    padding: 0;
+    display: unset;
+}
+
+
+
+/* 직원 그룹 및 권한: /human/group */
+.groupAccess .block {
+    margin: 5px 0;
+    border: 1px solid #EEEEEE;
+    background: #fff;
+}
+.groupAccess .block.not-use {
+    margin: 5px 0;
+    border: 1px solid #EEEEEE;
+    background: #FD9392;
+}
+.groupAccess .block-title {
+    font-family: Arial;
+    font-size: 12px;
+    color: #4c4743;
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+}
+.groupAccess.sortable {
+    list-style: none;
+    padding-left: 0;
+}
+.groupAccess.sortable ul {
+    margin-left: 25px;
+}
+.groupAccess .ui-sortable-helper {
+    box-shadow: rgba(0,0,0,0.15) 0 3px 5px 0;
+    width: 300px!important;
+    height: 40px!important;
+}
+.groupAccess .sortable-placeholder {
+    height: 35px;
+    background: #D0EEFF;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* 공통코드관리: /config/code */
+.commonCode .sortable-placeholder td {
+    height: 55px;
+    background: #D0EEFF;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* 직원계정: /human/account */
+.account th,
+.account td {
+    padding: 15px 8px !important;
+}
+
+/* 직원계정 신규작성: /human/accountWrite */
+.accountWrite .errMsg {
+    text-align: left;
+    padding: 0;
+    line-height: 32px;
 }
