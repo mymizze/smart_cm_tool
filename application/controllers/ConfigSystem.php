@@ -45,6 +45,22 @@ class ConfigSystem extends MY_Controller
         }
         $data['adminSiteConfigDetail'] = $adminSiteConfigDetail;
 
+        # 웹 사이트 설정 상세정보 검색
+        $webSiteConfigDetail = $siteconfig_model->getWebSiteConfigDetail();
+
+        if (count($webSiteConfigDetail) > 0) {
+            $webSiteConfigDetail = $webSiteConfigDetail[0];
+        }
+        $data['webSiteConfigDetail'] = $webSiteConfigDetail;
+
+        # 모바일 사이트 설정 상세정보 검색
+        $mobileSiteConfigDetail = $siteconfig_model->getMobileSiteConfigDetail();
+
+        if (count($mobileSiteConfigDetail) > 0) {
+            $mobileSiteConfigDetail = $mobileSiteConfigDetail[0];
+        }
+        $data['mobileSiteConfigDetail'] = $mobileSiteConfigDetail;
+
         $this->load->view('configsystem/site', $data);
     }
 
@@ -81,6 +97,112 @@ class ConfigSystem extends MY_Controller
         );
 
         $isResult = $siteconfig_model->updateAdminSiteInfo($site_vo);
+
+        # 출력: json
+        if ($isResult) {
+            $isResult = true;
+            $errMsg = "수정 되었습니다";
+        } else {
+            $isResult = false;
+            $errMsg = "처리중 오류가 발생했습니다";
+        }
+
+        echo json_encode(
+            array(
+                'status'  => $isResult,
+                'errMsg'  => $errMsg,
+            )
+        );
+    }
+
+    /**
+     * 사이트설정: 웹 사이트 상세정보 수정
+     */
+    public function webConfigDetailDo($seq)
+    {
+        # Layout Template 사용 안함
+        $this->yield = FALSE;
+
+        parent::__start();
+
+        # Library 설정
+        $data = $this->data;
+        $util = $this->util;
+
+        # Model 설정
+        $siteconfig_model = $this->siteconfig_model;
+
+        # 파라미터
+        $params = array(
+            'title'               => $util->isNullToVal($util->postParam('title'), ''),
+            'googleAnalytics'     => $util->isNullToVal($util->postParam('googleAnalytics'), ''),
+        );
+
+        # 사이트 설정 상세정보 검색
+        $site_vo = array(
+            'seq'   => $seq,
+            'data'  => array(
+                'title'              => $params['title'],
+                'googleAnalytics'    => $params['googleAnalytics'],
+                'editAdminId'        => $data['session']->adminId,
+                'editDate'           => date('Y-m-d H:i:s'),
+            ),
+        );
+
+        $isResult = $siteconfig_model->updateWebSiteInfo($site_vo);
+
+        # 출력: json
+        if ($isResult) {
+            $isResult = true;
+            $errMsg = "수정 되었습니다";
+        } else {
+            $isResult = false;
+            $errMsg = "처리중 오류가 발생했습니다";
+        }
+
+        echo json_encode(
+            array(
+                'status'  => $isResult,
+                'errMsg'  => $errMsg,
+            )
+        );
+    }
+
+    /**
+     * 사이트설정: 모바일 사이트 상세정보 수정
+     */
+    public function mobileConfigDetailDo($seq)
+    {
+        # Layout Template 사용 안함
+        $this->yield = FALSE;
+
+        parent::__start();
+
+        # Library 설정
+        $data = $this->data;
+        $util = $this->util;
+
+        # Model 설정
+        $siteconfig_model = $this->siteconfig_model;
+
+        # 파라미터
+        $params = array(
+            'title'               => $util->isNullToVal($util->postParam('title'), ''),
+            'googleAnalytics'     => $util->isNullToVal($util->postParam('googleAnalytics'), ''),
+        );
+
+        # 사이트 설정 상세정보 검색
+        $site_vo = array(
+            'seq'   => $seq,
+            'data'  => array(
+                'title'              => $params['title'],
+                'googleAnalytics'    => $params['googleAnalytics'],
+                'editAdminId'        => $data['session']->adminId,
+                'editDate'           => date('Y-m-d H:i:s'),
+            ),
+        );
+
+        $isResult = $siteconfig_model->updateMobileSiteInfo($site_vo);
 
         # 출력: json
         if ($isResult) {
