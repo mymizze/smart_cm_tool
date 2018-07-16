@@ -716,11 +716,11 @@
 
                             <form name="frmMenuSort" class="form-horizontal form-bordered">
                                 <div class="row">
-                                    <div class="col-md-4 text-left">
+                                    <div class="col-md-6 text-left">
                                         <a href="#modal-icon-fa" class="btn btn-default" data-toggle="modal">아이콘1</a>
                                         <a href="#modal-icon-glyph" class="btn btn-default" data-toggle="modal">아이콘2</a>
                                     </div>
-                                    <div class="col-md-4 col-md-offset-4 text-right">
+                                    <div class="col-md-6 text-right">
                                         <button type="button" onclick="sort.save()" data-ismodify="true" class="btn btn-primary">정렬저장</button>
                                         <a href="#modal-addmenu" class="btn btn-warning" data-toggle="modal">메뉴등록</a>
                                     </div>
