@@ -193,6 +193,20 @@ class Menu_model extends CI_Model
     }
 
     /**
+     * 처리: 메인 메뉴 아이콘 설정
+     */
+    public function setMenuIcon($vo) {
+        $query = "
+            UPDATE AdminMenu SET
+                icon = '".$vo['icon']."',
+                editDate = '".$vo['editDate']."'
+            WHERE depth1 = '".$vo['depth1']."'
+        ";
+
+        return $this->db->query($query);
+    }
+
+    /**
      * 처리: 메뉴 기본정보 수정
      */
     public function updateMenuBaseInfo($vo) {

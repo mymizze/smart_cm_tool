@@ -178,6 +178,9 @@ class ConfigSystem extends MY_Controller
         # Layout Template 사용 안함
         $this->yield = FALSE;
 
+        # 보기권한 체크 안함
+        $this->isCheckAccessView = false;
+
         parent::__start();
 
         # Library 설정
@@ -255,6 +258,9 @@ class ConfigSystem extends MY_Controller
         # Layout Template 사용 안함
         $this->yield = FALSE;
 
+        # 보기권한 체크 안함
+        $this->isCheckAccessView = false;
+
         parent::__start();
 
         # Library 설정
@@ -286,11 +292,11 @@ class ConfigSystem extends MY_Controller
             'summary'   => $params['summary'],
             'linkUrl'   => $params['linkUrl'],
             'linkParams'=> $params['linkParams'],
+            'icon'      => '',
             'isUse'     => $params['isUse'],
             'regDate'   => date('Y-m-d H:i:s'),
             'editDate'  => date('Y-m-d H:i:s'),
         );
-
         # 메뉴 Depth 정보 설정 및 신규메뉴 등록
         if ($menu_vo['depth1'] == "custom") {
             // 신규 메인 메뉴 인 경우
@@ -304,7 +310,6 @@ class ConfigSystem extends MY_Controller
         }
 
         $newMenuSeq = $menu_model->addNewMenu($menu_vo);
-
 
         # 그룹별 접근권한 값 설정
         $access_vo = array();
@@ -425,18 +430,17 @@ class ConfigSystem extends MY_Controller
         $menu_model = $this->menu_model;
 
         # 파라미터
-        parse_str($util->postParam('saveData'));
-
+        parse_str($util->postParam('saveData'), $output);
         $params = array(
-            'seq'       => $mnSeq,
-            'depth1'    => $depth1,
-            'depth2'    => $depth2,
-            'dep1name'  => trim($dep1name),
-            'dep2name'  => trim($dep2name),
-            'summary'   => trim($summary),
-            'linkUrl'   => trim($linkUrl),
-            'linkParams'=> trim($linkParams),
-            'isUse'     => $util->compare($isUse, "on", "Y", "N"),
+            'seq'       => $output['mnSeq'],
+            'depth1'    => $output['depth1'],
+            'depth2'    => $output['depth2'],
+            'dep1name'  => trim($output['dep1name']),
+            'dep2name'  => trim($output['dep2name']),
+            'summary'   => trim($output['summary']),
+            'linkUrl'   => trim($output['linkUrl']),
+            'linkParams'=> trim($output['linkParams']),
+            'isUse'     => $util->compare($output['isUse'], "on", "Y", "N"),
             'saveDataRelAdded' => json_decode($this->input->post('saveDataRelAdded')),
             'saveDataRelNew'   => json_decode($this->input->post('saveDataRelNew')),
         );
@@ -449,6 +453,7 @@ class ConfigSystem extends MY_Controller
             'summary'   => $params['summary'],
             'linkUrl'   => $params['linkUrl'],
             'linkParams'=> $params['linkParams'],
+            'icon'      => '',
             'isUse'     => $params['isUse'],
             'editDate'  => date('Y-m-d H:i:s'),
         );
@@ -528,7 +533,7 @@ class ConfigSystem extends MY_Controller
     }
 
     /**
-     * 메뉴설정: 연관 페이지 목록 검색
+     * 메뉴설정: 메뉴 아이콘 설정
      *
      * @return: json
      */
@@ -554,11 +559,26 @@ class ConfigSystem extends MY_Controller
 
         # 메뉴 등록 정보 설정
         $menu_vo = array(
-            'mnSeq'    => $params['mnSeq'],
+            'depth1'   => $params['depth1'],
+            'icon'     => $params['icon'],
+            'editDate' => date("Y-m-d H:i:s"),
         );
-        // $relativeList = $menu_model->getRelativeList($menu_vo);
+        $isResult = $menu_model->setMenuIcon($menu_vo);
 
-        // echo json_encode($relativeList);
+        # 출력: json
+        if ($isResult == true) {
+            $errMsg = "수정 되었습니다";
+        } else {
+            $errMsg = "처리중 오류가 발생했습니다";
+        }
+
+        echo json_encode(
+            array(
+                'status'  => $isResult,
+                'errMsg'  => $errMsg,
+            )
+        );
+
         exit;
     }
 
