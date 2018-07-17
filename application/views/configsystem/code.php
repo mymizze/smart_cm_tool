@@ -538,7 +538,7 @@
                                     </section>
                                 </form>
 
-                                <div class="pull-left" style="margin-top: 7px;">그룹 고유코드: <b><span id="txtGroupCode" class="text-info"><?=$groupCode?></span></b></div>
+                                <div class="pull-left" style="margin-top: 7px;">그룹 고유코드: <b><span id="txtGroupCode" class="text-info"><!-- Add DOM via code.getCodeList() --></span></b></div>
                             </div>
                             <!--// 검색 -->
 
