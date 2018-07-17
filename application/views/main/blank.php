@@ -10,7 +10,7 @@
             <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                 <!-- Widget ID (each widget will need unique ID)-->
-                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+                <div class="jarviswidget <?=GD_JARVISWIDGET_COLOR?>" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
                     <!-- widget options:
                         usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 

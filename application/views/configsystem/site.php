@@ -132,7 +132,7 @@
             <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                 <!-- 관리자 사이트 설정 -->
-                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+                <div class="jarviswidget <?=GD_JARVISWIDGET_COLOR?>" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
                     <header>
                         <span class="widget-icon glyphicon glyphicon-align-justify"> <i class="fa fa-comments"></i> </span>
                         <h2>관리자 사이트 설정</h2>
@@ -170,7 +170,7 @@
                 <!--// 관리자 사이트 설정 -->
 
                 <!-- 웹 사이트 설정 -->
-                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+                <div class="jarviswidget <?=GD_JARVISWIDGET_COLOR?>" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
                     <header>
                         <span class="widget-icon glyphicon glyphicon-align-justify"> <i class="fa fa-comments"></i> </span>
                         <h2>웹 사이트 설정</h2>
@@ -214,7 +214,7 @@
                 <!--// 웹 사이트 설정 -->
 
                 <!-- 모바일 사이트 설정 -->
-                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+                <div class="jarviswidget <?=GD_JARVISWIDGET_COLOR?>" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
                     <header>
                         <span class="widget-icon glyphicon glyphicon-align-justify"> <i class="fa fa-comments"></i> </span>
                         <h2>모바일 사이트 설정</h2>
