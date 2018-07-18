@@ -118,6 +118,52 @@ ul.li-vertical-list-default li label {
     top: 15px
 }
 
+/* 상단 퀵메뉴 */
+.quick-menu-wrap {
+    display: inline-block;
+    padding: 7px 13px 0;
+    position: relative
+}
+.quick-menu-wrap > .quick-menu-list {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+.quick-menu-wrap > .quick-menu-list > li {
+    margin: 0 13px;
+    padding: 0;
+    border : 0;
+    float: left;
+    cursor: pointer;
+}
+.quick-menu-wrap > .quick-menu-list > li > span {
+    display: block
+}
+.quick-menu-wrap > .quick-menu-list > li > span.label {
+    text-align: left;
+    color: #bfbfbf;
+    padding: 3px 0 !important;
+    /*visibility: hidden;*/
+}
+.quick-menu-wrap > .quick-menu-list > li > span.quick-menu {
+    max-width: 97%;
+    white-space: nowrap;
+    background: 0 0;
+    border: none;
+    padding: 0;
+    text-align: left;
+    color: #555;
+    font-size: 14px;
+}
+.quick-menu-wrap > .quick-menu-list > li > span.quick-menu:hover {
+    color: #333
+}
+
+.project-context > span.label > .badge {
+    margin-top: -5px;
+    margin-left: 3px;
+}
+
 /* 메뉴 설정: /config/menu */
 .configMenu .block {
     margin: 5px 0;

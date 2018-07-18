@@ -45,58 +45,97 @@
             <!-- end notification content -->
 
             <!-- footer: refresh area -->
-            <span> Last updated on: 12/12/2013 9:43AM
+            <!-- <span> Last updated on: 12/12/2013 9:43AM
                 <button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
                     <i class="fa fa-refresh"></i>
-                </button> </span>
+                </button> </span> -->
             <!-- end footer -->
 
         </div>
         <!-- END AJAX-DROPDOWN -->
     </div>
-
+<script type="text/javascript">
+    $(function () {
+        $('.project-context [data-toggle=dropdown]').hover(function(){
+          $(this).trigger('click');
+        });
+    })
+</script>
+<style>
+    .project-context .badge {
+        font-size: 10px;
+        font-weight: normal;
+    }
+    .project-context li b.badge {
+        margin-top: -5px;
+    }
+</style>
     <!-- #PROJECTS: projects dropdown -->
     <div class="project-context hidden-xs">
 
-        <span class="label">FAVORITE</span>
-        <span class="project-selector dropdown-toggle" data-toggle="dropdown">Quick menu <i class="fa fa-angle-down"></i></span>
+        <span class="label">QUICK <b class="badge bg-color-red bounceIn animated"> 7 </b></span>
+        <span class="project-selector dropdown-toggle" data-toggle="dropdown">신청현황 <i class="fa fa-angle-down"></i></span>
 
         <!-- Suggestion: populate this list with fetch and push technique -->
         <ul class="dropdown-menu">
             <li>
-                <a href="javascript:void(0);">충전신청</a>
+                <a href="javascript:void(0);">충전신청 <b class="badge bg-color-red bounceIn animated"> 5 </b></a>
             </li>
             <li>
-                <a href="javascript:void(0);">환전신청</a>
+                <a href="javascript:void(0);">환전신청 <b class="badge bg-color-red bounceIn animated"> 2 </b></a>
             </li>
             <li>
-                <a href="javascript:void(0);">총판환전</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="javascript:void(0);">회원가입</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">1:1문의</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="javascript:void(0);">자동경기1</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">고액배팅(스포츠)</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">고액배팅(미니게임)</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">배팅알람대상ID</a>
+                <a href="javascript:void(0);">총판환전 <b class="badge bg-color-red bounceIn animated"> 0 </b></a>
             </li>
         </ul>
         <!-- end dropdown-menu-->
-
     </div>
     <!-- end projects dropdown -->
+
+    <!-- #PROJECTS: projects dropdown -->
+    <div class="project-context hidden-xs">
+
+        <span class="label">QUICK <b class="badge bg-color-red bounceIn animated"> 3 </b></span>
+        <span class="project-selector dropdown-toggle" data-toggle="dropdown">고객센터 <i class="fa fa-angle-down"></i></span>
+
+        <!-- Suggestion: populate this list with fetch and push technique -->
+        <ul class="dropdown-menu">
+            <li>
+                <a href="javascript:void(0);">회원가입 <b class="badge bg-color-red bounceIn animated"> 2 </b></a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">1:1문의 <b class="badge bg-color-red bounceIn animated"> 0 </b></a>
+            </li>
+        </ul>
+        <!-- end dropdown-menu-->
+    </div>
+    <!-- end projects dropdown -->
+
+    <!-- #PROJECTS: projects dropdown -->
+    <div class="project-context hidden-xs">
+
+        <span class="label">QUICK <b class="badge bg-color-red bounceIn animated"> 5 </b></span>
+        <span class="project-selector dropdown-toggle" data-toggle="dropdown">배팅현황 <i class="fa fa-angle-down"></i></span>
+
+        <!-- Suggestion: populate this list with fetch and push technique -->
+        <ul class="dropdown-menu">
+            <li>
+                <a href="javascript:void(0);">자동경기1 <b class="badge bg-color-red bounceIn animated"> 3 </b></a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">고액배팅(스포츠) <b class="badge bg-color-red bounceIn animated"> 2 </b></a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">고액배팅(미니게임) <b class="badge bg-color-red bounceIn animated"> 1 </b></a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">배팅알람대상ID <b class="badge bg-color-red bounceIn animated"> 0 </b></a>
+            </li>
+        </ul>
+        <!-- end dropdown-menu-->
+    </div>
+    <!-- end projects dropdown -->
+
 
     <!-- #TOGGLE LAYOUT BUTTONS -->
     <!-- pulled right: nav area -->
@@ -146,25 +185,25 @@
         <!--// 로그아웃 버튼 -->
 
         <!-- search mobile button (this is hidden till mobile view port) -->
-        <div id="search-mobile" class="btn-header transparent pull-right">
+        <!-- <div id="search-mobile" class="btn-header transparent pull-right">
             <span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
-        </div>
+        </div> -->
         <!-- end search mobile button -->
 
         <!-- 검색 -->
-        <form action="search.html" class="header-search pull-right">
+        <!-- <form action="search.html" class="header-search pull-right">
             <input id="search-fld" type="text" name="param" placeholder="Find reports and more">
             <button type="submit">
                 <i class="fa fa-search"></i>
             </button>
             <a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
-        </form>
+        </form> -->
         <!--// 검색 -->
 
         <!-- 전체화면 버튼 -->
-        <div id="fullscreen" class="btn-header transparent pull-right">
+        <!-- <div id="fullscreen" class="btn-header transparent pull-right">
             <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
-        </div>
+        </div> -->
         <!--// 전체화면 버튼 -->
 
         <!-- 언어선택 -->
