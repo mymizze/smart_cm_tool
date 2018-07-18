@@ -271,9 +271,6 @@ class ConfigAdmin extends MY_Controller
         # 그룹내에 포함된 모든 구성원들의 그룹값 초기화
         $admin_model->updateResetAdminInGroup(array('grSeq' => $params['seq']));
 
-        # 세션 그룹 시퀀스 초기화
-        $this->session->grSeq = 0;
-
         # 메뉴 등록 정보 설정
         $group_vo = array(
             'seq'       => $params['seq'],

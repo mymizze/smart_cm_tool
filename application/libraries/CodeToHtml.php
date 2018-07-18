@@ -127,12 +127,12 @@ Class CodeToHtml
         foreach ($adminInGroupList as $key => $item) {
             $classSelected = ($item->isMember == "Y") ? "selected" : "";
 
-            if ($prevDepart != $item->department) {
-                if ($key > 0) {
-                    $html .= "</optgroup>";
-                }
-                $html .= "<optgroup label='".$item->itemName."'>";
-            }
+            // if ($prevDepart != $item->department) {
+            //     if ($key > 0) {
+            //         $html .= "</optgroup>";
+            //     }
+            //     $html .= "<optgroup label='".$item->itemName."'>";
+            // }
             $html .= "<option value='".$item->adSeq."' ".$classSelected.">".$item->name."</option>";
 
             $prevDepart = $item->department;
