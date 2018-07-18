@@ -24,6 +24,7 @@
     <link rel="icon" href="<?=GD_IMAGE_BASE_PATH?>/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
     <link href="<?=GD_ASSETS_PATH?>/js/plugin/switchery/switchery.min.css" rel="stylesheet" />
+    <link href="<?=GD_ASSETS_PATH?>/js/plugin/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
     <link rel="apple-touch-icon" href="img/splash/sptouch-icon-iphone.png">
     <link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
     <link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
@@ -65,6 +66,7 @@
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/fastclick/fastclick.min.js"></script>
     <script src="<?=GD_ASSETS_PATH?>/js/form-slider-switcher.demo.min.js"></script>
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/switchery/switchery.min.js"></script>
+    <script src="<?=GD_ASSETS_PATH?>/js/plugin/bootstrap-select/bootstrap-select.min.js"></script>
     <script src="<?=GD_ASSETS_PATH?>/js/plugin/parsley/dist/parsley.js"></script>
 
     <!--[if IE 8]>
