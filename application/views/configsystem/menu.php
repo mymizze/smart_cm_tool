@@ -738,7 +738,7 @@
                                     <?
                                             }
 
-                                            $iconClass = ($item->icon == "") ? "fa-file-o" : $item->icon;
+                                            $iconClass = ($item->icon == "") ? "fa-desktop" : $item->icon;
                                     ?>
                                     <li data-depth-level="1" data-menu-depth1="<?=$item->depth1?>" data-menu-dep1name="<?=$item->dep1name?>">
                                         <div class="block block-title bg-grey-lighter">

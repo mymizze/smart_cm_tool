@@ -59,6 +59,30 @@ class Admin_model extends CI_Model
     }
 
     /**
+     * 검색: 그룹 및 권한 관리에서 그룹구성원 목록
+     */
+    public function getAdminInGroupList($vo)
+    {
+        $query = "
+            SELECT
+                acc.department, dep.itemName, acc.seq AS adSeq, acc.adminId, acc.name,
+                (CASE WHEN gr.seq = '".$vo['grSeq']."' THEN 'Y' ELSE 'N' END) AS isMember
+            FROM AdminAccount AS acc
+                LEFT OUTER JOIN AdminGroup AS gr ON acc.grSeq = gr.seq AND gr.seq = '".$vo['grSeq']."'
+                LEFT OUTER JOIN (
+                    SELECT
+                        groupCode, itemCode, itemName
+                    FROM CommonCode
+                    WHERE groupCode='department'
+                ) AS dep ON acc.department = dep.itemCode
+            WHERE 1=1 ".$this->getWhereAdminInGroupList($vo)."
+            ORDER BY dep.itemName ASC, acc.name ASC;
+        ";
+
+        return $this->db->query($query)->result();
+    }
+
+    /**
      * 처리: 신규 계정 등록
      */
     public function addNewAccount($vo) {
