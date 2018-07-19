@@ -542,7 +542,7 @@
             <article id="panel_right" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
                 <!-- Widget ID (each widget will need unique ID)-->
-                <div class="jarviswidget <?=GD_JARVISWIDGET_COLOR?>" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false">
+                <div class="jarviswidget jarviswidget-color-white" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false">
                     <header>
                         <span class="widget-icon glyphicon glyphicon-align-justify"> <i class="fa fa-comments"></i> </span>
                         <h2>그룹 상세정보</h2><h2 data-panel-head="groupName"></h2>
@@ -620,7 +620,7 @@
                     <!-- end widget div -->
                 </div>
 
-                <div class="jarviswidget <?=GD_JARVISWIDGET_COLOR?>" id="wid-id-2" data-widget-colorbutton="false" data-widget-editbutton="false">
+                <div class="jarviswidget jarviswidget-color-white" id="wid-id-2" data-widget-colorbutton="false" data-widget-editbutton="false">
                     <header>
                         <span class="widget-icon glyphicon glyphicon-align-justify"> <i class="fa fa-comments"></i> </span>
                         <h2>메뉴 접속권한</h2><h2 data-panel-head="groupName"></h2>
