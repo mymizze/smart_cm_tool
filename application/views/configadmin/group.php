@@ -577,14 +577,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3" for="mainMenuSeq">로그인 후 첫페이지</label>
+                                    <label class="control-label col-md-3 col-sm-3" for="mainMenuSeq">로그인 후<br>첫페이지</label>
                                     <div class="col-md-8 col-sm-8">
                                         <select id="mainMenuSeq" name="mainMenuSeq" class="form-control">
                                             <option value="" selected>선택 해주세요</option>
                                             <?=$codeToHtml->getSubMenuCodeListSelectBox()?>
                                         </select>
-                                        <div class="col-md-10 col-sm-10 text-danger">
-                                            미사용 설정시 그룹내에 모든 구성원들의 그룹 값이 초기화 됩니다
+                                        <div class="col-md-12 col-sm-12 p-0 text-primary">
+                                            미선택시 관리자 홈으로 기본이동 합니다
                                         </div>
                                     </div>
                                 </div>
