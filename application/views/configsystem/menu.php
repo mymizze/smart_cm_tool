@@ -801,7 +801,7 @@
                     </header>
 
                     <!-- widget div-->
-                    <div>
+                    <div class="p-0">
                         <!-- widget edit box -->
                         <div class="jarviswidget-editbox">
                             <!-- This area used as dropdown edit box -->
@@ -963,7 +963,7 @@
                 <h4 class="modal-title">신규메뉴 등록</h4>
             </div>
             <form id="frmAddMenu" name="frmAddMenu" class="form-horizontal form-bordered" data-parsley-validate="true">
-                <div class="modal-body p-t-0 p-b-0">
+                <div class="modal-body p-0">
                     <div class="form-group">
                         <label class="control-label col-md-4">메인 메뉴명</label>
                         <div class="col-md-8">
@@ -1069,7 +1069,7 @@
 
                                         <div class="alert alert-warning"> <strong>NOTE</strong>: FontAwesome version 4.2 is blurry on some resolutions, therefore we did not upgrade (the included FontAwesome version is 4.1). Hopefully this issue will be resolved in later versions of FontAwesome and will be safer to upgrade</div>
 
-                                        <!--<h2>40 NEW icons with 4.2</h2>
+                                        <h2>40 NEW icons with 4.2</h2>
 
                                         <div class="row">
 
@@ -1245,7 +1245,7 @@
                                                 <i class="fa fa-yelp"></i> fa-yelp
                                             </div>
 
-                                        </div>-->
+                                        </div>
 
                                         <h2>70 new icons was introduced in 4.1</h2>
 

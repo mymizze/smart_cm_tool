@@ -542,7 +542,7 @@
             <article id="panel_right" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
                 <!-- Widget ID (each widget will need unique ID)-->
-                <div class="jarviswidget <?=GD_JARVISWIDGET_COLOR?>" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+                <div class="jarviswidget <?=GD_JARVISWIDGET_COLOR?>" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false">
                     <header>
                         <span class="widget-icon glyphicon glyphicon-align-justify"> <i class="fa fa-comments"></i> </span>
                         <h2>그룹 상세정보</h2><h2 data-panel-head="groupName"></h2>
@@ -550,7 +550,7 @@
                     </header>
 
                     <!-- widget div-->
-                    <div>
+                    <div class="p-0">
                         <!-- widget edit box -->
                         <div class="jarviswidget-editbox">
                             <!-- This area used as dropdown edit box -->
@@ -620,7 +620,7 @@
                     <!-- end widget div -->
                 </div>
 
-                <div class="jarviswidget <?=GD_JARVISWIDGET_COLOR?>" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+                <div class="jarviswidget <?=GD_JARVISWIDGET_COLOR?>" id="wid-id-2" data-widget-colorbutton="false" data-widget-editbutton="false">
                     <header>
                         <span class="widget-icon glyphicon glyphicon-align-justify"> <i class="fa fa-comments"></i> </span>
                         <h2>메뉴 접속권한</h2><h2 data-panel-head="groupName"></h2>
@@ -684,7 +684,7 @@
     <!-- end widget grid -->
 </div>
 
-<!-- Modal: 메뉴 추가 -->
+<!-- Modal: 그룹 추가 -->
 <div class="modal fade" id="modal-addgroup">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -693,7 +693,7 @@
                 <h4 class="modal-title">신규그룹 등록</h4>
             </div>
             <form id="frmAddGroup" name="frmAddGroup" class="form-horizontal form-bordered" data-parsley-validate="true">
-                <div class="modal-body p-t-0 p-b-0">
+                <div class="modal-body p-0">
                     <div class="form-group">
                         <label class="control-label col-md-4">그룹명</label>
                         <div class="col-md-8">
@@ -734,3 +734,4 @@
         </div>
     </div>
 </div>
+<!--// Modal: 그룹 추가 -->

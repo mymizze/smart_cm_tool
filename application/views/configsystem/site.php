@@ -139,7 +139,7 @@
                     </header>
 
                     <!-- widget div-->
-                    <div>
+                    <div class="p-0">
                         <!-- widget edit box -->
                         <div class="jarviswidget-editbox">
                             <!-- This area used as dropdown edit box -->
@@ -177,7 +177,7 @@
                     </header>
 
                     <!-- widget div-->
-                    <div>
+                    <div class="p-0">
                         <!-- widget edit box -->
                         <div class="jarviswidget-editbox">
                             <!-- This area used as dropdown edit box -->
@@ -221,7 +221,7 @@
                     </header>
 
                     <!-- widget div-->
-                    <div>
+                    <div class="p-0">
                         <!-- widget edit box -->
                         <div class="jarviswidget-editbox">
                             <!-- This area used as dropdown edit box -->

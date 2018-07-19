@@ -645,7 +645,7 @@
                 <h4 class="modal-title">신규그룹 등록</h4>
             </div>
             <form id="frmAddGroup" name="frmAddGroup" class="form-horizontal form-bordered" data-parsley-validate="true">
-                <div class="modal-body p-t-0 p-b-0">
+                <div class="modal-body p-0">
                     <div class="form-group">
                         <label class="control-label col-md-3">그룹 고유코드</label>
                         <div class="col-md-5">
@@ -669,8 +669,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal">닫기</a>
                     <button type="button" onclick="group.add()" data-ismodify="true" class="btn btn-primary">저장</button>
+                    <a href="javascript:;" class="btn btn-default" data-dismiss="modal">닫기</a>
                 </div>
             </form>
         </div>
@@ -687,7 +687,7 @@
                 <h4 class="modal-title">그룹 정보수정</h4>
             </div>
             <form id="frmEditGroup" name="frmEditGroup" class="form-horizontal form-bordered" data-parsley-validate="true" onsubmit="return group.edit()">
-                <div class="modal-body p-t-0 p-b-0">
+                <div class="modal-body p-0">
                     <div class="form-group">
                         <label class="control-label col-md-3">그룹 고유코드</label>
                         <div class="col-md-5">
@@ -702,8 +702,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal">닫기</a>
                     <button type="button" onclick="group.edit()" data-ismodify="true" class="btn btn-primary">저장</button>
+                    <a href="javascript:;" class="btn btn-default" data-dismiss="modal">닫기</a>
                 </div>
             </form>
         </div>
