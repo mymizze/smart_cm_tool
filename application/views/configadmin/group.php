@@ -512,8 +512,8 @@
 
                             <form name="frmGroupList" class="form-horizontal form-bordered">
                                 <div class="text-right">
+                                    <a href="#modal-addgroup" class="btn btn-default" data-toggle="modal">그룹등록</a>
                                     <button type="button" onclick="group.save()" data-ismodify="true" class="btn btn-primary">정렬저장</button>
-                                    <a href="#modal-addgroup" class="btn btn-warning" data-toggle="modal">그룹등록</a>
                                 </div>
 
                                 <ul class="groupAccess sortable list-unstyled" id="sortable">
@@ -647,11 +647,11 @@
                                             <?=$codeToHtml->getGroupListSelectBox()?>
                                         </select>
                                     </div>
-                                    <div class="col-md-3 p-l-3">
+                                    <div class="col-md-2 p-l-2">
                                         <button type="button" onclick="access.getConfigGroupAccess()" class="btn btn-info">가져오기</button>
                                     </div>
-                                    <div class="col-md-5 text-right">
-                                        <button type="button" onclick="access.setSelectAll()" class="btn btn-success">전체 선택/해제</button>
+                                    <div class="col-md-6 text-right">
+                                        <button type="button" onclick="access.setSelectAll()" class="btn btn-default">전체 선택/해제</button>
                                         <button type="button" onclick="access.save()" data-ismodify="true" class="btn btn-primary">저장</button>
                                     </div>
                                 </div>
