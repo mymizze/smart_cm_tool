@@ -588,13 +588,11 @@ class ConfigSystem extends MY_Controller
             array_push($ignoreSeqs, $item->seq);
         }
 
-        if (count($ignoreSeqs) > 0) {
-            $remove_vo = array(
-                'mnSeq'      => $params['seq'],
-                'ignoreSeqs' => "'".join("','", $ignoreSeqs)."'",
-            );
-            $isResult = $menu_model->removeRelative($remove_vo);
-        }
+        $remove_vo = array(
+            'mnSeq'      => $params['seq'],
+            'ignoreSeqs' => "'".join("','", $ignoreSeqs)."'",
+        );
+        $isResult = $menu_model->removeRelative($remove_vo);
 
         # 연관 페이지 링크 경로 신규 등록
         if (count($params['saveDataRelNew']) > 0) {
