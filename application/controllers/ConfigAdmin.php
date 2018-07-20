@@ -454,7 +454,7 @@ class ConfigAdmin extends MY_Controller
     }
 
     /**
-     * 직원 계정: 리스트 페이지
+     * 관리자 계정: 리스트 페이지
      */
     public function account()
     {
@@ -475,7 +475,6 @@ class ConfigAdmin extends MY_Controller
         # 사이트 설정 상세정보 검색
         $admin_vo = array(
             'ignoreAdminId' => '\'system\'',
-            'ignoreStatus'  => '3',
             'name'          => $params['name'],
         );
         $data['adminList'] = $admin_model->getAdminList($admin_vo);
@@ -484,7 +483,7 @@ class ConfigAdmin extends MY_Controller
     }
 
     /**
-     * 직원 계정: 계정 추가 페이지
+     * 관리자 계정: 계정 추가 페이지
      */
     public function accountWrite()
     {
@@ -498,9 +497,9 @@ class ConfigAdmin extends MY_Controller
     }
 
     /**
-     * 직원 계정: 계정 수정 페이지
+     * 관리자 계정: 계정 상세정보 호출
      */
-    public function accountModify()
+    public function getAdminDetail()
     {
         parent::__start();
 
@@ -513,7 +512,7 @@ class ConfigAdmin extends MY_Controller
 
         # 파라미터
         $params = array(
-            'seq' => $util->isNullToVal($util->getParam('seq'), 0),
+            'seq' => $util->isNullToVal($util->postParam('seq'), 0),
         );
 
         # 관리자 계정 상세정보 검색
@@ -542,13 +541,13 @@ class ConfigAdmin extends MY_Controller
             $util->alert("존재하지 않는 계정입니다", null, -1);
             exit;
         }
-        $data['adminDetail'] = $adminDetail;
 
-        $this->load->view('configadmin/accountModify', $data);
+        echo json_encode($adminDetail);
+        exit;
     }
 
     /**
-     * 직원계정: 그룹 신규 등록시 고유 ID 중복체크
+     * 관리자계정: 그룹 신규 등록시 고유 ID 중복체크
      */
     public function isUniqueAdminId()
     {
@@ -597,7 +596,7 @@ class ConfigAdmin extends MY_Controller
     }
 
     /**
-     * 직원 계정: 신규 계정 추가 처리
+     * 관리자 계정: 신규 계정 추가 처리
      */
     public function accountAddDo()
     {
@@ -618,10 +617,6 @@ class ConfigAdmin extends MY_Controller
             'adminId'       => $util->isNullToVal($util->postParam('adminId'), ''),
             'adminPw'       => $util->isNullToVal($util->postParam('adminPw'), ''),
             'name'          => $util->isNullToVal($util->postParam('name'), ''),
-            'companyNo'     => $util->isNullToVal($util->postParam('companyNo'), ''),
-            'company'       => $util->isNullToVal($util->postParam('company'), 0),
-            'department'    => $util->isNullToVal($util->postParam('department'), 0),
-            'position'      => $util->isNullToVal($util->postParam('position'), 0),
             'phone'         => $util->isNullToVal($util->postParam('phone'), ''),
             'email'         => $util->isNullToVal($util->postParam('email'), ''),
             'grSeq'         => $util->isNullToVal($util->postParam('grSeq'), 0),
@@ -635,10 +630,6 @@ class ConfigAdmin extends MY_Controller
             'adminId'       => $params['adminId'],
             'adminPw'       => $params['adminPw'],
             'name'          => $params['name'],
-            'companyNo'     => $params['companyNo'],
-            'company'       => $params['company'],
-            'department'    => $params['department'],
-            'position'      => $params['position'],
             'phone'         => $params['phone'],
             'email'         => $params['email'],
             'grSeq'         => $params['grSeq'],
@@ -668,7 +659,7 @@ class ConfigAdmin extends MY_Controller
     }
 
     /**
-     * 직원 계정: 계정 정보수정 처리
+     * 관리자 계정: 계정 정보수정 처리
      */
     public function accountUpdateDo()
     {
@@ -690,10 +681,6 @@ class ConfigAdmin extends MY_Controller
             'adminId'       => $util->isNullToVal($util->postParam('adminId'), ''),
             'adminPw'       => $util->isNullToVal($util->postParam('adminPw'), ''),
             'name'          => $util->isNullToVal($util->postParam('name'), ''),
-            'companyNo'     => $util->isNullToVal($util->postParam('companyNo'), ''),
-            'company'       => $util->isNullToVal($util->postParam('company'), 0),
-            'department'    => $util->isNullToVal($util->postParam('department'), 0),
-            'position'      => $util->isNullToVal($util->postParam('position'), 0),
             'phone'         => $util->isNullToVal($util->postParam('phone'), ''),
             'email'         => $util->isNullToVal($util->postParam('email'), ''),
             'grSeq'         => $util->isNullToVal($util->postParam('grSeq'), 0),
@@ -707,10 +694,6 @@ class ConfigAdmin extends MY_Controller
             'adminId'       => $params['adminId'],
             'adminPw'       => $params['adminPw'],
             'name'          => $params['name'],
-            'companyNo'     => $params['companyNo'],
-            'company'       => $params['company'],
-            'department'    => $params['department'],
-            'position'      => $params['position'],
             'phone'         => $params['phone'],
             'email'         => $params['email'],
             'grSeq'         => $params['grSeq'],
@@ -739,7 +722,7 @@ class ConfigAdmin extends MY_Controller
     }
 
     /**
-     * 직원 계정: 계정 삭제 처리
+     * 관리자 계정: 계정 삭제 처리
      */
     public function accountRemoveDo()
     {
@@ -785,7 +768,7 @@ class ConfigAdmin extends MY_Controller
     }
 
     /**
-     * 직원 계정: 계정 정보수정 페이지에서 Dropzone 파일 추가/삭제시 파일정보 업데이트 처리
+     * 관리자 계정: 계정 정보수정 페이지에서 Dropzone 파일 추가/삭제시 파일정보 업데이트 처리
      */
     public function accountFileUpdateDo()
     {

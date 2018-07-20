@@ -132,7 +132,7 @@ class Admin_model extends CI_Model
     }
 
     /**
-     * 처리: 계정 정보수정
+     * 처리: 계정 삭제
      */
     public function removeAccount($vo) {
         $query = "
