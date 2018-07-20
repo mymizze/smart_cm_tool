@@ -722,7 +722,7 @@
                                     </div>
                                     <div class="col-md-6 text-right">
                                         <button type="button" onclick="sort.save()" data-ismodify="true" class="btn btn-primary">정렬저장</button>
-                                        <a href="#modal-addmenu" class="btn btn-warning" data-toggle="modal">메뉴등록</a>
+                                        <a href="#modal-addmenu" class="btn btn-warning" data-ismodify="true" data-toggle="modal">메뉴등록</a>
                                     </div>
                                 </div>
 

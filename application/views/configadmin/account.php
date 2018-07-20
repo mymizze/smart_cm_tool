@@ -238,7 +238,7 @@
         // Data table에 버튼영역 추가
         $("#dt_admin_wrapper").prepend(
             '<div class="p-10 p-b-0 text-right">'+
-            '    <a href="#modal-addaccount" class="btn btn-primary" data-toggle="modal">신규계정등록</a>'+
+            '    <a href="#modal-addaccount" class="btn btn-primary" data-ismodify="true" data-toggle="modal">신규계정등록</a>'+
             '    <input type="button" class="btn btn-default" value="목록보기" onclick="util.move(window.location.href)">'+
             '</div>'+
             '<hr class="simple">'
@@ -577,7 +577,7 @@
                 </fieldset>
 
                 <footer>
-                    <button type="submit" class="btn btn-primary">등록</button>
+                    <button type="submit" data-ismodify="true" class="btn btn-primary">등록</button>
                 </footer>
             </form>
         </div>
@@ -683,8 +683,8 @@
                 </fieldset>
 
                 <footer>
-                    <button type="submit" class="btn btn-primary">정보수정</button>
-                    <button type="button" onclick="account.remove()" class="btn btn-danger">계정삭제</button>
+                    <button type="submit" data-ismodify="true" class="btn btn-primary">정보수정</button>
+                    <button type="button" onclick="account.remove()" data-ismodify="true" class="btn btn-danger">계정삭제</button>
                 </footer>
             </form>
         </div>

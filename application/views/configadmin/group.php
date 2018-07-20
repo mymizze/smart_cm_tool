@@ -512,7 +512,7 @@
 
                             <form name="frmGroupList" class="form-horizontal form-bordered">
                                 <div class="text-right">
-                                    <a href="#modal-addgroup" class="btn btn-default" data-toggle="modal">그룹등록</a>
+                                    <a href="#modal-addgroup" class="btn btn-default" data-ismodify="true" data-toggle="modal">그룹등록</a>
                                     <button type="button" onclick="group.save()" data-ismodify="true" class="btn btn-primary">정렬저장</button>
                                 </div>
 
@@ -610,7 +610,7 @@
                                 </div>
                                 <div class="form-group text-center p-10">
                                     <button type="button" onclick="detail.save()" data-ismodify="true" class="btn btn-primary">저장</button>
-                                    <button type="button" onclick="group.remove(this)" class="btn btn-danger">삭제</button>
+                                    <button type="button" onclick="group.remove(this)" data-ismodify="true" class="btn btn-danger">삭제</button>
                                 </div>
                             </form>
 
