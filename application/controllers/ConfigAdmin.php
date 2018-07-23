@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * 인사 관리
+ * 관리자 페이지 환경 설정
  */
 class ConfigAdmin extends MY_Controller
 {
