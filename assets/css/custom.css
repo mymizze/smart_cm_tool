@@ -53,6 +53,16 @@ ul.li-vertical-list-default li label {
     margin: 0 10px;
 }
 
+/* ul li 가로 배치 */
+ul.inline-type {
+    padding: 0;
+    margin: 0;
+}
+ul.inline-type li {
+    display: inline;
+    padding: 0 5px;
+}
+
 /* 페이지 로딩시 fadeIn 애니메이션 */
 #content {
     animation: fadein 2s;
@@ -162,6 +172,25 @@ ul.li-vertical-list-default li label {
 .project-context > span.label > .badge {
     margin-top: -5px;
     margin-left: 3px;
+}
+
+/* 스마트폼 테이블 */
+.smart-form thead th,
+.smart-form thead td.txt {
+    text-align: center;
+    vertical-align: middle;
+}
+.smart-form tbody td.txt {
+    text-align: center;
+    vertical-align: middle !important;
+}
+.smart-form thead label.checkbox i {
+    margin-top: -4px;
+    margin-left: 2px;
+}
+.smart-form tbody label.checkbox i {
+    margin-top: 4px;
+    margin-left: 2px;
 }
 
 /* 메뉴 설정: /config/menu */

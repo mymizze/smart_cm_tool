@@ -227,6 +227,14 @@
     background: 0 0!important
 }
 
+/* text color */
+.txt-color-darkyellow {
+    color: #c69030 !important;
+}
+.txt-color-darkred {
+    color: #a70a2d !important;
+}
+
 /* Margin */
 .m-0 {
     margin: 0!important
