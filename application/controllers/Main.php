@@ -19,7 +19,7 @@ class Main extends MY_Controller
     }
 
     /**
-     * 화면: 메인 기본 홈
+     * 메인화면: 페이지
      */
     public function index()
     {
@@ -31,7 +31,7 @@ class Main extends MY_Controller
     }
 
     /**
-     * 화면: 기본 빈 화면
+     * 빈 화면: 페이지
      */
     public function blank()
     {

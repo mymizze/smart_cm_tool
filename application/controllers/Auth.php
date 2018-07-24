@@ -23,7 +23,7 @@ class Auth extends MY_Controller
     }
 
     /**
-     * 화면: 로그인
+     * 로그인: 페이지
      */
     public function login()
     {
@@ -53,7 +53,7 @@ class Auth extends MY_Controller
     }
 
     /**
-     * 처리: 로그아웃
+     * 로그아웃 처리
      */
     public function logout()
     {
@@ -74,7 +74,7 @@ class Auth extends MY_Controller
     }
 
     /**
-     * 처리: 로그인
+     * 로그인 처리
      *
      * @return: json
      */
