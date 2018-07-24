@@ -115,30 +115,18 @@ var util = {
          * @tutorial: util.comma(123456)
          */
         comma: function(num) {
-            var dot = 0;
-            var mark = num.match(/[+-]/g);
-            var arrDot = num.split(".");
+            var parts = num.toString().split(".");
+            return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+        },
 
-            if (arrDot.length > 1) {
-                num = arrDot[0];
-                dot = arrDot[1];
-            }
-
-            num = num.replace(/(\D)/g, "");
-
-            var reg = /(^[+-]?\d+)(\d{3})/;
-            num += "";  //숫자를 문자열로 변환
-
-            while(reg.test(num)){
-                num = num.replace(reg, "$1" + "," + "$2");
-            }
-            if (mark) {
-                num = mark + num;
-            }
-            if (dot > 0) {
-                num += "." + dot;
-            }
-            return num;
+        /**
+         * 숫자 뒷자리부터 세자리 마다 콤마(,) 찍기
+         *
+         * @return: String
+         * @tutorial: util.uncomma('123,456')
+         */
+        uncomma: function(num) {
+            return num.toString().replace(/\,/g, '');
         },
 
     /*=====================================================================

@@ -17,7 +17,7 @@ class Auth extends MY_Controller
         parent::__construct();
 
         # Model 로드
-        $this->load->model('admin/admin_model');
+        $this->load->model('account/admin_model');
         $this->load->model('site/menu_model');
         $this->load->model('site/access_model');
     }

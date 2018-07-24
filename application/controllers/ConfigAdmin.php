@@ -20,7 +20,7 @@ class ConfigAdmin extends MY_Controller
         $this->load->model('site/menu_model');
         $this->load->model('site/group_model');
         $this->load->model('site/access_model');
-        $this->load->model('admin/admin_model');
+        $this->load->model('account/admin_model');
     }
 
     /**

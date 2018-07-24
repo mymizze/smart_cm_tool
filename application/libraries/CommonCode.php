@@ -23,7 +23,7 @@ Class CommonCode
         $CI =& get_instance();
 
         # Model 로드
-        $CI->load->model('admin/admin_model');
+        $CI->load->model('account/admin_model');
         $CI->load->model('site/group_model');
         $CI->load->model('site/menu_model');
         $CI->load->model('site/code_model');
