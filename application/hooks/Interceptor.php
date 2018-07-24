@@ -45,13 +45,14 @@ class Interceptor
 
         # 현재 선택한 메뉴 페이지
         $CI->global_data['page'] = array(
-            'depth'     => "depth1=".$util->requestParam('depth1')."&depth2=".$util->requestParam('depth2'),
-            'depth1'    => $util->requestParam('depth1'),
-            'depth2'    => $util->requestParam('depth2'),
-            'dep1name'  => '',
-            'dep2name'  => '',
-            'summary'   => '',
-            'pageName'  => '',
+            'depth'         => "depth1=".$util->requestParam('depth1')."&depth2=".$util->requestParam('depth2'),
+            'depth1'        => $util->requestParam('depth1'),
+            'depth2'        => $util->requestParam('depth2'),
+            'dep1name'      => '',
+            'dep2name'      => '',
+            'currentUrl'    => $_SERVER['PHP_SELF']."?"."depth1=".$util->requestParam('depth1')."&depth2=".$util->requestParam('depth2'),
+            'summary'       => '',
+            'pageName'      => '',
         );
 
         # URL 정보
