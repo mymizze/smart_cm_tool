@@ -383,6 +383,19 @@ Class Util
         }
     }
 
+    /**
+     * 오늘 날짜인지 구분하여 시간출력 및 날짜 출력
+     */
+    public function switchTodayDateToTime($date)
+    {
+        if (date('Y-m-d') == date('Y-m-d', strtotime($date))) {
+            $date = date('H:s:i', strtotime($date));
+        } else {
+            $date = date('Y-m-d', strtotime($date));
+        }
+        return $date;
+    }
+
 
 #======================================================================================
 # 파일/폴더 처리 관련 함수

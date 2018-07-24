@@ -91,7 +91,7 @@ Class CodeToHtml
         # Model 설정
         $commoncode = $this->commoncode;
 
-        # 메인메뉴 목록 검색
+        # 공통코드 검색
         $code_vo = array(
             'groupCode' => $groupCode,
             'itemCode'  => $itemCode,
@@ -127,12 +127,6 @@ Class CodeToHtml
         foreach ($adminInGroupList as $key => $item) {
             $classSelected = ($item->isMember == "Y") ? "selected" : "";
 
-            // if ($prevDepart != $item->department) {
-            //     if ($key > 0) {
-            //         $html .= "</optgroup>";
-            //     }
-            //     $html .= "<optgroup label='".$item->itemName."'>";
-            // }
             $html .= "<option value='".$item->adSeq."' ".$classSelected.">".$item->name."</option>";
 
             $prevDepart = $item->department;
