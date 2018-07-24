@@ -11,9 +11,10 @@ class Member_model extends CI_Model
         $query = "
             SELECT
                 seq, userId, userPw, exchangePw, nickname,
-                point, level, phone, email, blacklistType,
+                point, cash, level, phone, email, blacklistType,
                 bankName, bankDepositName, bankNumber, affiliatedId, apiGamePer,
-                accountType, status, memo, lastLogin, regDate, editDate
+                accountType, memberType, profitMonth, profitCumulative, status,
+                memo, lastLogin, isDel, regDate, editDate
             FROM MemberAccount
             WHERE 1=1 ".$this->getWhereMemberList($vo)."
             ORDER BY nickname ASC
@@ -29,9 +30,10 @@ class Member_model extends CI_Model
         $query = "
             SELECT
                 seq, userId, userPw, exchangePw, nickname,
-                point, level, phone, email, blacklistType,
+                point, cash, level, phone, email, blacklistType,
                 bankName, bankDepositName, bankNumber, affiliatedId, apiGamePer,
-                accountType, status, memo, lastLogin, regDate, editDate
+                accountType, memberType, profitMonth, profitCumulative, status,
+                memo, lastLogin, isDel, regDate, editDate
             FROM MemberAccount
             WHERE isDel = 'N'
                 AND seq = '".$vo['seq']."'
@@ -48,15 +50,17 @@ class Member_model extends CI_Model
         $query = "
             INSERT INTO MemberAccount (
                 userId, userPw, exchangePw, nickname,
-                point, level, phone, email, blacklistType,
+                point, cash, level, phone, email, blacklistType,
                 bankName, bankDepositName, bankNumber, affiliatedId, apiGamePer,
-                accountType, status, memo, regDate, editDate
+                accountType, memberType, profitMonth, profitCumulative, status,
+                memo, regDate, editDate
             ) VALUES (
                 '".$vo['userId']."',
                 md5('".$vo['userPw']."'),
                 md5('".$vo['exchangePw']."'),
                 '".$vo['nickname']."',
                 '".$vo['point']."',
+                '".$vo['cash']."',
                 '".$vo['level']."',
                 '".$vo['phone']."',
                 '".$vo['email']."',
@@ -67,6 +71,9 @@ class Member_model extends CI_Model
                 '".$vo['affiliatedId']."',
                 '".$vo['apiGamePer']."',
                 '".$vo['accountType']."',
+                '".$vo['memberType']."',
+                '".$vo['profitMonth']."',
+                '".$vo['profitCumulative']."',
                 '".$vo['status']."',
                 '".$vo['memo']."',
                 '".$vo['regDate']."',

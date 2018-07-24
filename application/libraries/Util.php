@@ -388,10 +388,12 @@ Class Util
      */
     public function switchTodayDateToTime($date)
     {
-        if (date('Y-m-d') == date('Y-m-d', strtotime($date))) {
-            $date = date('H:s:i', strtotime($date));
-        } else {
-            $date = date('Y-m-d', strtotime($date));
+        if ($date != "") {
+            if (date('Y-m-d') == date('Y-m-d', strtotime($date))) {
+                $date = date('H:s:i', strtotime($date));
+            } else {
+                $date = date('Y-m-d', strtotime($date));
+            }
         }
         return $date;
     }

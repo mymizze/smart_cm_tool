@@ -542,7 +542,7 @@
                         <section class="col col-6">
                             <label class="label">전화번호</label>
                             <label class="input"> <i class="icon-prepend fa fa-phone"></i>
-                                <input type="tel" name="phone" placeholder="전화번호" data-mask="(999) 9999-9999">
+                                <input type="tel" name="phone" placeholder="전화번호" data-mask="999-9999-9999">
                             </label>
                         </section>
                         <section class="col col-6">
