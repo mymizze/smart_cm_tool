@@ -189,7 +189,7 @@ ul.inline-type li {
     margin-left: 2px;
 }
 .smart-form tbody label.checkbox i {
-    margin-top: 4px;
+    margin-top: -4px;
     margin-left: 2px;
 }
 

@@ -62,7 +62,7 @@
                                     </form>
                                 </article>
                                 <article class="col-xs-12 col-sm-5 col-md-5 col-lg-4 text-right">
-                                    <button type="button" class="btn btn-primary">회원등록</button>
+                                    <button type="button" class="btn btn-primary" onclick="util.move('/member/write?<?=$page['depth']?>')">회원등록</button>
                                     <button type="button" class="btn btn-default" onclick="util.move('<?=$page['currentUrl']?>')">목록</button>
                                 </article>
                             </div>
@@ -92,10 +92,9 @@
                                     <table class="table table-bordered">
                                         <colgroup>
                                             <col width="30">
-                                            <col width="100">
+                                            <col width="140">
                                             <col width="90">
                                             <col width="90">
-                                            <col width="110">
                                             <col width="100">
                                             <col width="*">
                                             <col width="*">
@@ -108,7 +107,6 @@
                                                 <th class="txt">닉네임</th>
                                                 <th class="txt">가입일</th>
                                                 <th class="txt">최근접속일</th>
-                                                <th class="txt">레벨</th>
                                                 <th class="txt">추천인</th>
                                                 <th class="txt">이달수익</th>
                                                 <th class="txt">누적수익</th>
@@ -118,42 +116,33 @@
                                         </thead>
                                         <tbody>
                                             <?
-                                            for ($i=0; $i < 5; $i++) {
-                                                switch ($i) {
-                                                    case 1:
+                                            foreach ($memberList as $key => $item) {
+                                                switch ($item->blacklistType) {
+                                                    case 2:
                                                         $fontColor = "txt-color-darkyellow";
+                                                        $badgeColor = "bg-color-yellow";
                                                         break;
                                                     case 3:
                                                         $fontColor = "txt-color-darkred";
+                                                        $badgeColor = "bg-color-red";
                                                         break;
 
                                                     default:
                                                         $fontColor = "";
+                                                        $badgeColor = "";
                                                         break;
                                                 }
                                             ?>
                                             <tr>
                                                 <td><label class="checkbox"><input type="checkbox" name="checkbox"><i></i></label></td>
-                                                <td class="txt <?=$fontColor?>">홍길동길동</td>
-                                                <td class="txt">2018-05-18</td>
-                                                <td class="txt">2018-07-23</td>
-                                                <td class="txt">
-                                                    <label class="select">
-                                                        <select>
-                                                            <option value="0">승인대기</option>
-                                                            <option value="1">1레벨</option>
-                                                            <option value="2">2레벨</option>
-                                                            <option value="3">3레벨</option>
-                                                            <option value="4">4레벨</option>
-                                                            <option value="5">5레벨</option>
-                                                        </select> <i></i>
-                                                    </label>
-                                                </td>
-                                                <td class="txt">김철수철수</td>
-                                                <td class="txt"><span class="txt-color-default">10,000</span></td>
-                                                <td class="txt"><span class="txt-color-red">-400,000</span></td>
-                                                <td class="txt">1,000</td>
-                                                <td class="txt">0</td>
+                                                <td class="txt <?=$fontColor?>"><b class="badge <?=$badgeColor?> bounceIn animated p-3" style="font-size: 3px; margin-top: -3px"> <?=$item->level?> </b> <?=$item->nickname?></td>
+                                                <td class="txt"><?=$util->switchTodayDateToTime($item->regDate)?></td>
+                                                <td class="txt"><?=$item->lastLogin?></td>
+                                                <td class="txt"><?=$item->affiliatedId?></td>
+                                                <td class="txt"><span class="">0</span></td>
+                                                <td class="txt"><span class="">0</span></td>
+                                                <td class="txt"><span class="">0</span></td>
+                                                <td class="txt"><span class="">0</span></td>
                                             </tr>
                                             <?
                                             }
@@ -239,4 +228,3 @@
     </section>
     <!-- end widget grid -->
 </div>
-<?=$className?>
