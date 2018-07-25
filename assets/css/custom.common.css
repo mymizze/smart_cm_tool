@@ -51,6 +51,11 @@
     ime-mode:disabled;
 }
 
+/* 스마트폼 사용시 ui 깨지는 부분들 추가 */
+.btn-padding-default {
+    padding: 6px 12px;
+}
+
 /* Border default */
 .b-1 {
     border: solid 1px #CCCCCC;

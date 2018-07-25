@@ -34,18 +34,46 @@ class Member extends MY_Controller
 
         # Model 설정
         $member_model = $this->member_model;
+        $paging = $this->paging;
 
         # 파라미터
         $params = array(
-            'name' => $util->isNullToVal($util->getParam('name'), ''),
+            'searchType'    => $util->isNullToVal($util->postParam('searchType'), ''),
+            'searchKeyword' => $util->isNullToVal($util->postParam('searchKeyword'), ''),
+            'currPage'      => $util->isNullToVal($util->postParam('currPage'), 1),
+            'pageSize'      => $util->isNullToVal($util->postParam("pageSize"), 30),
+            'status'        => $util->isNullToVal($util->postParam("status"), ''),
+            'accountType'   => $util->isNullToVal($util->postParam("accountType"), '')
         );
 
-        # 사이트 설정 상세정보 검색
-        $member_vo = array(
-            'ignoreAdminId' => '\'system\'',
-            'name'          => $params['name'],
+        # 회원 목록 검색
+        $search_vo = array(
+            'searchType'    => $params['searchType'],
+            'searchKeyword' => $params['searchKeyword'],
+            'currPage'      => ($params['currPage'] * $params['pageSize']) - $params['pageSize'],
+            'pageSize'      => $params['pageSize'],
+            'status'        => $params['status'],
+            'accountType'   => $params['accountType'],
+            'ignoreUserId'  => '\'system\'',
         );
-        $data['memberList'] = $member_model->getMemberList($member_vo);
+        $data['memberList'] = $member_model->getMemberList($search_vo);
+
+        # 페이징 설정
+        $pageData = $member_model->getMemberListPageInfo($search_vo);
+        $paging->currPage   = $params['currPage'];
+        $paging->pageSize   = $params['pageSize'];
+        $paging->blockPage  = 9;
+        $paging->totalCount = $pageData[0]->totalCount;
+        $paging->totalPage  = $pageData[0]->totalPage;
+
+        # 상태별 계정 카운트 및 캐쉬
+        $countByStatus = $member_model->getCountStatusCash();
+
+        # 페이지 리턴 변수 값 설정
+        $data['search'] = $search_vo;
+        $data['paging'] = $paging;
+        $data['pagingHTML'] = $paging->html();
+        $data['count'] = $countByStatus[0];
 
         $this->load->view('member/list', $data);
     }
@@ -89,7 +117,7 @@ class Member extends MY_Controller
             'withDel' => true,
             'userId' => $params['userId']
         );
-        $memberInfo = $member_model->getMemberList($member_vo);
+        $memberInfo = $member_model->getMemberListAll($member_vo);
 
         if (count($memberInfo) > 0) {
             $isResult = false;

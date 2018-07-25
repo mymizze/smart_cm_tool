@@ -62,7 +62,8 @@ $autoload['libraries'] = array(
     'define',
     'util',
     'commonCode',
-    'codeToHtml'
+    'codeToHtml',
+    'paging'
 );
 
 /*

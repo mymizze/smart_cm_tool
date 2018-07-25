@@ -50,5 +50,15 @@ var ui = {
         util.cookies.del([
             "codeCurrTabIndex"
         ]);
+    },
+
+    /**
+     * 페이징
+     */
+    page: function (page) {
+        var $frm = $("input[name=currPage]").closest('form');
+
+        $("input[name=currPage]", $frm).val(page);
+        $frm.submit();
     }
 }
