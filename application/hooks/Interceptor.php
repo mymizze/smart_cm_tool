@@ -50,7 +50,7 @@ class Interceptor
             'depth2'        => $util->requestParam('depth2'),
             'dep1name'      => '',
             'dep2name'      => '',
-            'currentUrl'    => $_SERVER['PHP_SELF']."?"."depth1=".$util->requestParam('depth1')."&depth2=".$util->requestParam('depth2'),
+            'currentUrl'    => str_replace('/index.php', '', $_SERVER['PHP_SELF'])."?"."depth1=".$util->requestParam('depth1')."&depth2=".$util->requestParam('depth2'),
             'summary'       => '',
             'pageName'      => '',
         );
