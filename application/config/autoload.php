@@ -63,7 +63,8 @@ $autoload['libraries'] = array(
     'util',
     'commonCode',
     'codeToHtml',
-    'paging'
+    'paging',
+    'excel'
 );
 
 /*

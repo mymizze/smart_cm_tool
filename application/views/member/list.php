@@ -7,8 +7,14 @@
         /**
          * 키워드 검색
          */
-        search: function () {
-            document.frmSearch.submit();
+        searchKeyword: function () {
+            var $frm = $(document.frmSearch);
+
+            $("input[name=status]", $frm).val('');
+            $("input[name=accountType]", $frm).val('');
+
+            $frm.attr("action", "");
+            $frm.submit();
         },
 
         /**
@@ -17,7 +23,9 @@
         searchStatus: function (status) {
             var $frm = $(document.frmSearch);
 
+            $("input[name=searchKeyword]", $frm).val('');
             $("input[name=status]", $frm).val(status);
+            $frm.attr("action", "");
             $frm.submit();
         },
 
@@ -27,7 +35,19 @@
         searchAccountType: function (type) {
             var $frm = $(document.frmSearch);
 
+            $("input[name=searchKeyword]", $frm).val('');
             $("input[name=accountType]", $frm).val(type);
+            $frm.attr("action", "");
+            $frm.submit();
+        },
+
+        /**
+         * Excel 다운로드
+         */
+        excelDown: function () {
+            var $frm = $(document.frmSearch);
+
+            $frm.attr("action", "/member/exceldown");
             $frm.submit();
         }
     }
@@ -38,6 +58,13 @@
     $(function () {
         // 커서 첫 포커스
         $(document.frmSearch).find('input[name=searchKeyword]').focus();
+
+        // 검색 키워드 엔터 이벤트
+        $("[name=searchKeyword]").on('keypress', function(event) {
+            if (event.keyCode == 13) {
+                member.searchKeyword();
+            }
+        });
     })
 </script>
 
@@ -72,10 +99,10 @@
                             <!-- 검색 및 회원등록 -->
                             <div class="row">
                                 <article class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
-                                    <form name="frmSearch" method="post" onsubmit="member.search(); return false;">
+                                    <form name="frmSearch" method="post">
                                         <input type="hidden" name="currPage" value="<?=$search['currPage']?>">
-                                        <input type="hidden" name="status">
-                                        <input type="hidden" name="accountType">
+                                        <input type="hidden" name="status" value="<?=$search['status']?>">
+                                        <input type="hidden" name="accountType" value="<?=$search['accountType']?>">
 
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
@@ -98,7 +125,7 @@
                                                 <div class="input-group">
                                                     <input type="text" name="searchKeyword" class="form-control" value="<?=$search['searchKeyword']?>">
                                                     <div class="input-group-btn">
-                                                        <button class="btn btn-default" type="button" onclick="member.search()">검색</button>
+                                                        <button class="btn btn-default" type="button" onclick="member.searchKeyword()">검색</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -198,8 +225,7 @@
 
                                 <div class="row m-t-10">
                                     <article class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
-                                        <button type="button" class="btn btn-default">엑셀(전체)</button>
-                                        <button type="button" class="btn btn-default">엑셀(활동중)</button>
+                                        <button type="button" class="btn btn-default" onclick="member.excelDown()">엑셀다운</button>
                                     </article>
 
                                     <article class="col-xs-12 col-sm-7 col-md-8 col-lg-8 text-right">

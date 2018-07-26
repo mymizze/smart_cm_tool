@@ -227,6 +227,54 @@ class Member extends MY_Controller
     }
 
     /**
+     * 회원목록: 엑셀 다운
+     */
+    public function exceldown()
+    {
+        parent::__start();
+
+        # Library 설정
+        $data = $this->data;
+        $util = $this->util;
+
+        # Model 설정
+        $member_model = $this->member_model;
+
+        # 파라미터
+        $params = array(
+            'searchType'    => $util->isNullToVal($util->postParam('searchType'), ''),
+            'searchKeyword' => $util->isNullToVal($util->postParam('searchKeyword'), ''),
+            'status'        => $util->isNullToVal($util->postParam("status"), ''),
+            'accountType'   => $util->isNullToVal($util->postParam("accountType"), '')
+        );
+
+        # 회원 목록 검색
+        $search_vo = array(
+            'searchType'    => $params['searchType'],
+            'searchKeyword' => $params['searchKeyword'],
+            'status'        => $params['status'],
+            'accountType'   => $params['accountType'],
+            'ignoreUserId'  => '\'system\'',
+        );
+        $memberList = $member_model->getMemberListExcel($search_vo);
+
+        # Excel 설정
+        $header = array(
+            '아이디', '닉네임', '은행명', '예금주', '계좌번호',
+            '레벨', '핸드폰', '이메일', '추천인', '계정타입',
+            '회원종류', '블랙리스트', '계정상태', '등록일'
+        );
+
+        $memberList = $this->excel->setColNameToIndex($memberList);
+
+        $this->excel->header = $header; // 헤더 데이터 설정
+        $this->excel->rows = $memberList; // 로우 데이터 설정
+        $this->excel->setFillHeader(); // 헤더 배경색 설정
+        $this->excel->setFixHeader(); // 헤더 고정 설정
+        $this->excel->download('회원목록'.date('Ymdhis')); // 파일 다운로드
+    }
+
+    /**
      * 회원정보 수정 내역: 페이지
      */
     public function modifyInfoHistory()

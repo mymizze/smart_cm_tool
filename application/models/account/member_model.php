@@ -44,6 +44,27 @@ class Member_model extends CI_Model
     }
 
     /**
+     * 검색: 회원 목록 전체
+     */
+    public function getMemberListExcel($vo) {
+        $query = "
+            SELECT
+                userId, nickname, bankName, bankDepositName, bankNumber,
+                level, phone, email, affiliatedId,
+                (CASE accountType WHEN 1 THEN '일반' WHEN 2 THEN '임시' ELSE '' END) AS accountType,
+                (CASE memberType WHEN 1 THEN '일반' WHEN 2 THEN '총판' WHEN 3 THEN '부본' WHEN 4 THEN '대본' ELSE '' END) AS memberType,
+                (CASE blacklistType WHEN 1 THEN '일반' WHEN 2 THEN '주의' WHEN 3 THEN '심각' ELSE '' END) AS blacklistType,
+                (CASE status WHEN 1 THEN '활동중' WHEN 2 THEN '일시정지' WHEN 3 THEN '사용제한' WHEN 4 THEN '탈퇴' ELSE '' END) AS status,
+                regDate
+            FROM MemberAccount
+            WHERE 1=1 ".$this->getWhereMemberList($vo)."
+            ORDER BY seq DESC
+        ";
+
+        return $this->db->query($query)->result_array();
+    }
+
+    /**
      * 회원 목록 페이징 데이터
      */
     public function getMemberListPageInfo($vo){
