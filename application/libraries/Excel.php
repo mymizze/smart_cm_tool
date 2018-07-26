@@ -49,15 +49,11 @@ class Excel extends PHPExcel {
      */
     public function setColNameToIndex($dataList=[])
     {
-        $tmpRows = [];
+        $resultList = [];
         foreach ($dataList as $key => $data) {
-            $tmpColumns = [];
-            foreach ($data as $key => $item) {
-                array_push($tmpColumns, $item);
-            }
-            array_push($tmpRows, $tmpColumns);
+            array_push($resultList, array_values($data));
         }
-        return $tmpRows;
+        return $resultList;
     }
 
     /**
