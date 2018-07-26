@@ -161,7 +161,7 @@
                             <!-- 회원 목록 -->
                             <div class="table-responsive m-t-10">
                                 <form name="frmMember" class="smart-form">
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered tbl-bgcolor-lightgray-even">
                                         <colgroup>
                                             <col width="140">
                                             <col width="90">
@@ -175,15 +175,15 @@
                                         </colgroup>
                                         <thead>
                                             <tr>
-                                                <th class="txt">닉네임</th>
-                                                <th class="txt">가입일</th>
-                                                <th class="txt">최근접속일</th>
-                                                <th class="txt">추천인</th>
-                                                <th class="txt">이달수익</th>
-                                                <th class="txt">누적수익</th>
-                                                <th class="txt">캐쉬</th>
-                                                <th class="txt">포인트</th>
-                                                <th class="txt">배팅내역</th>
+                                                <th class="txt p-t-15 p-b-15">닉네임</th>
+                                                <th class="txt p-t-15 p-b-15">가입일</th>
+                                                <th class="txt p-t-15 p-b-15">최근접속일</th>
+                                                <th class="txt p-t-15 p-b-15">추천인</th>
+                                                <th class="txt p-t-15 p-b-15">이달수익</th>
+                                                <th class="txt p-t-15 p-b-15">누적수익</th>
+                                                <th class="txt p-t-15 p-b-15">캐쉬</th>
+                                                <th class="txt p-t-15 p-b-15">포인트</th>
+                                                <th class="txt p-t-15 p-b-15">배팅내역</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -200,13 +200,13 @@
                                                         break;
 
                                                     default:
-                                                        $fontColor = "";
+                                                        $fontColor = "txt-color-grayDark";
                                                         $badgeColor = "";
                                                         break;
                                                 }
                                             ?>
                                             <tr>
-                                                <td class="txt <?=$fontColor?>"><b class="badge <?=$badgeColor?> bounceIn animated p-3" style="font-size: 3px; margin-top: -3px"> <?=$item->level?> </b> <?=$item->nickname?></td>
+                                                <td class="txt"><a href="#modal-viewaccount" data-toggle="modal" class="<?=$fontColor?>"><b class="badge <?=$badgeColor?> bounceIn animated p-3" style="font-size: 3px; margin-top: -3px"> <?=$item->level?> </b> <?=$item->nickname?></a></td>
                                                 <td class="txt"><?=$util->switchTodayDateToTime($item->regDate)?></td>
                                                 <td class="txt"><?=$util->switchTodayDateToTime($item->lastLogin)?></td>
                                                 <td class="txt"><?=$item->affiliatedId?></td>
@@ -256,3 +256,48 @@
     </section>
     <!-- end widget grid -->
 </div>
+
+<!-- Modal: 회원 상세정보 -->
+<div class="modal fade" id="modal-viewaccount">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">회원 정보</h4>
+            </div>
+            <form id="frmNewAccount" name="frmNewAccount" class="smart-form" novalidate="novalidate">
+                <fieldset>
+                    <div class="row">
+                        <section class="col col-6">
+                            <label class="label">비밀번호</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-lock"></i>
+                                <input type="password" id="adminPw" name="adminPw" maxlength="20">
+                            </label>
+                        </section>
+                        <section class="col col-6">
+                            <label class="label">비밀번호 확인</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-lock"></i>
+                                <input type="password" name="adminPwConfirm" maxlength="20">
+                            </label>
+                        </section>
+                    </div>
+
+                    <section>
+                        <label class="label">메모</label>
+                        <label class="textarea">
+                            <i class="icon-append fa fa-comment"></i>
+                            <textarea rows="4" name="memo"></textarea>
+                        </label>
+                    </section>
+                </fieldset>
+
+                <footer>
+                    <button type="submit" data-ismodify="true" class="btn btn-primary">등록</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+</div>
+<!--// Modal: 회원 상세정보 -->

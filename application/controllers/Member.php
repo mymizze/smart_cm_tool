@@ -265,13 +265,15 @@ class Member extends MY_Controller
             '회원종류', '블랙리스트', '계정상태', '등록일'
         );
 
+        ## 컬럼명을 index 형태로 변경
         $memberList = $this->excel->setColNameToIndex($memberList);
 
+        ## 값 설정
         $this->excel->header = $header; // 헤더 데이터 설정
         $this->excel->rows = $memberList; // 로우 데이터 설정
         $this->excel->setFillHeader(); // 헤더 배경색 설정
         $this->excel->setFixHeader(); // 헤더 고정 설정
-        $this->excel->download('회원목록'.date('Ymdhis')); // 파일 다운로드
+        $this->excel->download('회원목록_'.date('Ymdhis')); // 파일 다운로드
     }
 
     /**
