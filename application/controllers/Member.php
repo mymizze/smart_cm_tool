@@ -62,7 +62,7 @@ class Member extends MY_Controller
         $pageData = $member_model->getMemberListPageInfo($search_vo);
         $paging->currPage   = $params['currPage'];
         $paging->pageSize   = $params['pageSize'];
-        $paging->blockPage  = 9;
+        $paging->blockPage  = 10;
         $paging->totalCount = $pageData[0]->totalCount;
         $paging->totalPage  = $pageData[0]->totalPage;
 

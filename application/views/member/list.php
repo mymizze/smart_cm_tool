@@ -24,7 +24,9 @@
             var $frm = $(document.frmSearch);
 
             $("input[name=searchKeyword]", $frm).val('');
+            $("input[name=accountType]", $frm).val('');
             $("input[name=status]", $frm).val(status);
+
             $frm.attr("action", "");
             $frm.submit();
         },
@@ -36,7 +38,9 @@
             var $frm = $(document.frmSearch);
 
             $("input[name=searchKeyword]", $frm).val('');
+            $("input[name=status]", $frm).val('');
             $("input[name=accountType]", $frm).val(type);
+
             $frm.attr("action", "");
             $frm.submit();
         },
@@ -133,6 +137,7 @@
                                     </form>
                                 </article>
                                 <article class="col-xs-12 col-sm-5 col-md-5 col-lg-4 text-right">
+                                    <button type="button" class="btn btn-default" onclick="member.excelDown()">엑셀다운</button>
                                     <button type="button" class="btn btn-primary" onclick="util.move('/member/write?<?=$page['depth']?>')">회원등록</button>
                                     <button type="button" class="btn btn-default" onclick="util.move('<?=$page['currentUrl']?>')">목록</button>
                                 </article>
@@ -206,7 +211,7 @@
                                                 }
                                             ?>
                                             <tr>
-                                                <td class="txt"><a href="#modal-viewaccount" data-toggle="modal" class="<?=$fontColor?>"><b class="badge <?=$badgeColor?> bounceIn animated p-3" style="font-size: 3px; margin-top: -3px"> <?=$item->level?> </b> <?=$item->nickname?></a></td>
+                                                <td class="txt"><a href="#modal-viewaccount" data-toggle="modal" class="<?=$fontColor?>"><b class="badge <?=$badgeColor?> bounceIn animated p-3 f-s-10" style="margin-top: -3px"> <?=$item->level?> </b> <?=$item->nickname?></a></td>
                                                 <td class="txt"><?=$util->switchTodayDateToTime($item->regDate)?></td>
                                                 <td class="txt"><?=$util->switchTodayDateToTime($item->lastLogin)?></td>
                                                 <td class="txt"><?=$item->affiliatedId?></td>
@@ -224,11 +229,7 @@
                                 </form>
 
                                 <div class="row m-t-10">
-                                    <article class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
-                                        <button type="button" class="btn btn-default" onclick="member.excelDown()">엑셀다운</button>
-                                    </article>
-
-                                    <article class="col-xs-12 col-sm-7 col-md-8 col-lg-8 text-right">
+                                    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                                         <?=$pagingHTML?>
                                     </article>
                                 </div>

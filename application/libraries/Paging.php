@@ -30,7 +30,7 @@ class Paging{
 
             if($sPage - $this->blockPage > 0 ){
                 $fPage = $sPage - 1;
-                $str .= "<li><a href='javascript:ui.page('".$fPage."');'><i class='fa fa-angle-left'></i></a></li>";
+                $str .= "<li><a href='javascript:ui.page(".$fPage.");'><i class='fa fa-angle-left'></i></a></li>";
             }else{
                 $str .= "<li><a href='javascript:;'><i class='fa fa-angle-left'></i></a></li>";
             }
