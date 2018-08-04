@@ -193,6 +193,28 @@ ul.inline-type li {
     margin-left: 2px;
 }
 
+/* 기본 테이블 */
+.popup-table {
+}
+.popup-table .min-height {
+    height: 32px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.popup-table th,
+.popup-table td {
+    height: 32px !important;
+    padding: 8px !important;
+    vertical-align: middle !important;
+}
+.popup-table tbody .title {
+    font-weight: bold;
+    text-align: center;
+    background-color: #F5F5F5;
+}
+.popup-table tbody .cont {
+}
+
 /* 메뉴 설정: /config/menu */
 .configMenu .block {
     margin: 5px 0;

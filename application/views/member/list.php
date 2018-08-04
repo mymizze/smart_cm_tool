@@ -260,44 +260,173 @@
 
 <!-- Modal: 회원 상세정보 -->
 <div class="modal fade" id="modal-viewaccount">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width:700px">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">회원 정보</h4>
+                <h4 class="modal-title">회원 상세정보</h4>
             </div>
-            <form id="frmNewAccount" name="frmNewAccount" class="smart-form" novalidate="novalidate">
-                <fieldset>
-                    <div class="row">
-                        <section class="col col-6">
-                            <label class="label">비밀번호</label>
-                            <label class="input">
-                                <i class="icon-append fa fa-lock"></i>
-                                <input type="password" id="adminPw" name="adminPw" maxlength="20">
-                            </label>
-                        </section>
-                        <section class="col col-6">
-                            <label class="label">비밀번호 확인</label>
-                            <label class="input">
-                                <i class="icon-append fa fa-lock"></i>
-                                <input type="password" name="adminPwConfirm" maxlength="20">
-                            </label>
-                        </section>
-                    </div>
+            <div class="modal-body">
+                <form id="frmNewAccount" name="frmNewAccount" class="form-horizontal form-bordered">
+                    <table class="table table-bordered popup-table">
+                        <colgroup>
+                            <col width="120">
+                            <col width="230">
+                            <col width="120">
+                            <col width="230">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="title">아이디</td>
+                                <td><input type="text" name="userId" value="" maxlength="20" class="form-control"></td>
+                                <td class="title">닉네임</td>
+                                <td><input type="text" name="nickname" value="" maxlength="6" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td class="title">비밀번호</td>
+                                <td><input type="password" name="userPw" value="" maxlength="20" class="form-control"></td>
+                                <td class="title">출금비밀번호</td>
+                                <td><input type="password" name="exchangePw" value="" maxlength="20" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td class="title">추천인</td>
+                                <td><input type="text" name="affiliatedId" value="" maxlength="20" class="form-control"></td>
+                                <td class="title">레벨</td>
+                                <td>
+                                    <select name="level" class="form-control">
+                                        <option value="0">승인대기</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">계정종류</td>
+                                <td>
+                                    <select name="status" class="form-control">
+                                        <option value="">선택해주세요</option>
+                                        <?=$codeToHtml->getCodeListSelectBox('accountType')?>
+                                    </select>
+                                </td>
+                                <td class="title">계정상태</td>
+                                <td>
+                                    <select name="status" class="form-control">
+                                        <option value="">선택해주세요</option>
+                                        <?=$codeToHtml->getCodeListSelectBox('useraccountstatus')?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">블랙리스트</td>
+                                <td>
+                                    <select name="status" class="form-control">
+                                        <option value="">선택해주세요</option>
+                                        <?=$codeToHtml->getCodeListSelectBox('blacklist')?>
+                                    </select>
+                                </td>
+                                <td class="title"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="title">하위레벨</td>
+                                <td colspan="3">
+                                    <div class="min-height">
+                                        <ul class="inline-type">
+                                            <li><b>인원:</b> <span>0</span>명</li>
+                                            <li><b>총지급:</b> <span>0</span>원</li>
+                                            <li><b>총배팅:</b> <span>0</span>원</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">소속</td>
+                                <td colspan="3">
+                                    <table class="table table-bordered m-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="title bg-color-magnesium">대본</th>
+                                                <th class="title bg-color-silver">부본</th>
+                                                <th class="title bg-color-mercury">총판</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">가입일</td>
+                                <td>
+                                    <div class="min-height">2018-07-10 12:00:00</div>
+                                </td>
+                                <td class="title">최근접속</td>
+                                <td><span>2018-07-10 12:00:00</span></td>
+                            </tr>
+                            <tr>
+                                <td class="title">단폴더배팅</td>
+                                <td>
+                                    <input type="checkbox" id="bet_1">
+                                    <label for="bet_1">단폴불가</label>
 
-                    <section>
-                        <label class="label">메모</label>
-                        <label class="textarea">
-                            <i class="icon-append fa fa-comment"></i>
-                            <textarea rows="4" name="memo"></textarea>
-                        </label>
-                    </section>
-                </fieldset>
+                                    <input type="checkbox" id="bet_2">
+                                    <label for="bet_2">투폴불가</label>
 
-                <footer>
-                    <button type="submit" data-ismodify="true" class="btn btn-primary">등록</button>
-                </footer>
-            </form>
+                                    <input type="checkbox" id="bet_3">
+                                    <label for="bet_3">투폴하락</label>
+                                </td>
+                                <td class="title">게시판작성권한</td>
+                                <td>
+                                    <select name="" class="form-control">
+                                        <option value="1">가능</option>
+                                        <option value="2">불가능</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">총배팅횟수</td>
+                                <td>
+                                    <div class="min-height">0</div>
+                                </td>
+                                <td class="title">새글 및 댓글</td>
+                                <td>0 / 0</td>
+                            </tr>
+                            <tr>
+                                <td class="title">최초가입IP</td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-7 p-t-6">
+                                            <span>111.222.333.44</span>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4 text-right">
+                                            <button type="button" class="btn btn-default" onclick="">접속로그</button>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="title">접속IP</td>
+                                <td>
+                                    <div>
+                                        <span>222.222.222.222</span>
+                                        <span>(대한민국 <img class="flag flag-kr" src="<?=GD_IMAGE_BASE_PATH?>/blank.gif" alt="Korea, Republic of">)</span>
+                                    </div>
+                                    <div>
+                                        <span>로그인 횟수 100회</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">미니게임제한</td>
+                                <td colspan="3">
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
         </div>
     </div>
 </div>

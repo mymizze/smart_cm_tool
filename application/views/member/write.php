@@ -274,7 +274,7 @@
                                             <label class="label">닉네임</label>
                                             <label class="input">
                                                 <i class="icon-append fa fa-user"></i>
-                                                <input type="text" name="nickname" maxlength="5">
+                                                <input type="text" name="nickname" maxlength="6">
                                             </label>
                                         </section>
                                         <section class="col col-6">
